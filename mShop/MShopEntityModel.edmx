@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MShopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" Nullable="false" />
+          <Property Name="Category" Type="enum" Nullable="false" />
+          <Property Name="Barcode" Type="char" MaxLength="13" />
+          <Property Name="Thumbnail" Type="blob" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mshop.Products_Shops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products_Shops">
+          <Key>
+            <PropertyRef Name="P_Id" />
+            <PropertyRef Name="S_Id" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="P_Id" Type="int" Nullable="false" />
+          <Property Name="S_Id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mshop.Products_Warehouses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products_Warehouses">
+          <Key>
+            <PropertyRef Name="P_Id" />
+            <PropertyRef Name="W_Id" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="P_Id" Type="int" Nullable="false" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shops">
+          <Key>
+            <PropertyRef Name="S_Id" />
+          </Key>
+          <Property Name="S_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mshop.Shops_Warehouses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Shops_Warehouses">
+          <Key>
+            <PropertyRef Name="S_Id" />
+            <PropertyRef Name="W_Id" />
+          </Key>
+          <Property Name="S_Id" Type="int" Nullable="false" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="U_Id" />
+          </Key>
+          <Property Name="U_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="S_Id" Type="int" />
+          <Property Name="W_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Warehouses">
+          <Key>
+            <PropertyRef Name="W_Id" />
+          </Key>
+          <Property Name="W_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="set" Nullable="false" />
+        </EntityType>
+        <Association Name="products_shops_ibfk_1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Products_Shops" Type="Self.Products_Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="Products_Shops">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_shops_ibfk_2">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="1" />
+          <End Role="Products_Shops" Type="Self.Products_Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="S_Id" />
+            </Principal>
+            <Dependent Role="Products_Shops">
+              <PropertyRef Name="S_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_warehouses_ibfk_1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Products_Warehouses" Type="Self.Products_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="Products_Warehouses">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_warehouses_ibfk_2">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="1" />
+          <End Role="Products_Warehouses" Type="Self.Products_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Principal>
+            <Dependent Role="Products_Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="shops_warehouses_ibfk_1">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="1" />
+          <End Role="Shops_Warehouses" Type="Self.Shops_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Principal>
+            <Dependent Role="Shops_Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="shops_warehouses_ibfk_2">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="1" />
+          <End Role="Shops_Warehouses" Type="Self.Shops_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="S_Id" />
+            </Principal>
+            <Dependent Role="Shops_Warehouses">
+              <PropertyRef Name="S_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_1">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="S_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="S_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_2">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="W_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MShopModelStoreContainer">
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="mshop" store:Type="Tables" />
+          <EntitySet Name="Shops" EntityType="Self.Shops" Schema="mshop" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="mshop" store:Type="Tables" />
+          <EntitySet Name="Warehouses" EntityType="Self.Warehouses" Schema="mshop" store:Type="Tables" />
+          <EntitySet Name="Products_Shops" EntityType="Self.Products_Shops" store:Type="Tables" store:Schema="mshop">
+            <DefiningQuery>SELECT
+`Products_Shops`.`P_Id`, 
+`Products_Shops`.`S_Id`, 
+`Products_Shops`.`Quantity`
+FROM `Products_Shops` AS `Products_Shops`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Products_Warehouses" EntityType="Self.Products_Warehouses" store:Type="Tables" store:Schema="mshop">
+            <DefiningQuery>SELECT
+`Products_Warehouses`.`P_Id`, 
+`Products_Warehouses`.`W_Id`, 
+`Products_Warehouses`.`Quantity`
+FROM `Products_Warehouses` AS `Products_Warehouses`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Shops_Warehouses" EntityType="Self.Shops_Warehouses" store:Type="Tables" store:Schema="mshop">
+            <DefiningQuery>SELECT
+`Shops_Warehouses`.`S_Id`, 
+`Shops_Warehouses`.`W_Id`
+FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="products_shops_ibfk_1" Association="Self.products_shops_ibfk_1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Shops" EntitySet="Products_Shops" />
+          </AssociationSet>
+          <AssociationSet Name="products_shops_ibfk_2" Association="Self.products_shops_ibfk_2">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Products_Shops" EntitySet="Products_Shops" />
+          </AssociationSet>
+          <AssociationSet Name="products_warehouses_ibfk_1" Association="Self.products_warehouses_ibfk_1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Warehouses" EntitySet="Products_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="products_warehouses_ibfk_2" Association="Self.products_warehouses_ibfk_2">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Products_Warehouses" EntitySet="Products_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="shops_warehouses_ibfk_1" Association="Self.shops_warehouses_ibfk_1">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Shops_Warehouses" EntitySet="Shops_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="shops_warehouses_ibfk_2" Association="Self.shops_warehouses_ibfk_2">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Shops_Warehouses" EntitySet="Shops_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_2" Association="Self.users_ibfk_2">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Products_Shops" Relationship="Self.products_shops_ibfk_1" FromRole="Products" ToRole="Products_Shops" />
+          <NavigationProperty Name="Products_Warehouses" Relationship="Self.products_warehouses_ibfk_1" FromRole="Products" ToRole="Products_Warehouses" />
+        </EntityType>
+        <EntityType Name="Shops">
+          <Key>
+            <PropertyRef Name="S_Id" />
+          </Key>
+          <Property Name="S_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Products_Shops" Relationship="Self.products_shops_ibfk_2" FromRole="Shops" ToRole="Products_Shops" />
+          <NavigationProperty Name="Users" Relationship="Self.users_ibfk_1" FromRole="Shops" ToRole="Users" />
+          <NavigationProperty Name="Warehouses" Relationship="Self.Shops_Warehouses" FromRole="Shops" ToRole="Warehouses" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="U_Id" />
+          </Key>
+          <Property Name="U_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_Id" Type="Int32" />
+          <Property Name="W_Id" Type="Int32" />
+          <NavigationProperty Name="Shops" Relationship="Self.users_ibfk_1" FromRole="Users" ToRole="Shops" />
+          <NavigationProperty Name="Warehouses" Relationship="Self.users_ibfk_2" FromRole="Users" ToRole="Warehouses" />
+        </EntityType>
+        <EntityType Name="Warehouses">
+          <Key>
+            <PropertyRef Name="W_Id" />
+          </Key>
+          <Property Name="W_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="65531" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.users_ibfk_2" FromRole="Warehouses" ToRole="Users" />
+          <NavigationProperty Name="Products_Warehouses" Relationship="Self.products_warehouses_ibfk_2" FromRole="Warehouses" ToRole="Products_Warehouses" />
+          <NavigationProperty Name="Shops" Relationship="Self.Shops_Warehouses" FromRole="Warehouses" ToRole="Shops" />
+        </EntityType>
+        <EntityType Name="Products_Shops">
+          <Key>
+            <PropertyRef Name="P_Id" />
+            <PropertyRef Name="S_Id" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="P_Id" Type="Int32" Nullable="false" />
+          <Property Name="S_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.products_shops_ibfk_1" FromRole="Products_Shops" ToRole="Products" />
+          <NavigationProperty Name="Shops" Relationship="Self.products_shops_ibfk_2" FromRole="Products_Shops" ToRole="Shops" />
+        </EntityType>
+        <EntityType Name="Products_Warehouses">
+          <Key>
+            <PropertyRef Name="P_Id" />
+            <PropertyRef Name="W_Id" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="P_Id" Type="Int32" Nullable="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.products_warehouses_ibfk_1" FromRole="Products_Warehouses" ToRole="Products" />
+          <NavigationProperty Name="Warehouses" Relationship="Self.products_warehouses_ibfk_2" FromRole="Products_Warehouses" ToRole="Warehouses" />
+        </EntityType>
+        <Association Name="products_shops_ibfk_1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Products_Shops" Type="Self.Products_Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="Products_Shops">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_warehouses_ibfk_1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Products_Warehouses" Type="Self.Products_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="Products_Warehouses">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_shops_ibfk_2">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="1" />
+          <End Role="Products_Shops" Type="Self.Products_Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="S_Id" />
+            </Principal>
+            <Dependent Role="Products_Shops">
+              <PropertyRef Name="S_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_1">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="S_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="S_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_2">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="W_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="products_warehouses_ibfk_2">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="1" />
+          <End Role="Products_Warehouses" Type="Self.Products_Warehouses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Principal>
+            <Dependent Role="Products_Warehouses">
+              <PropertyRef Name="W_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Shops_Warehouses">
+          <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="*" />
+          <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Shops" EntityType="Self.Shops" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Warehouses" EntityType="Self.Warehouses" />
+          <EntitySet Name="Products_Shops" EntityType="Self.Products_Shops" />
+          <EntitySet Name="Products_Warehouses" EntityType="Self.Products_Warehouses" />
+          <AssociationSet Name="products_shops_ibfk_1" Association="Self.products_shops_ibfk_1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Shops" EntitySet="Products_Shops" />
+          </AssociationSet>
+          <AssociationSet Name="products_warehouses_ibfk_1" Association="Self.products_warehouses_ibfk_1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Warehouses" EntitySet="Products_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="products_shops_ibfk_2" Association="Self.products_shops_ibfk_2">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Products_Shops" EntitySet="Products_Shops" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_2" Association="Self.users_ibfk_2">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="products_warehouses_ibfk_2" Association="Self.products_warehouses_ibfk_2">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Products_Warehouses" EntitySet="Products_Warehouses" />
+          </AssociationSet>
+          <AssociationSet Name="Shops_Warehouses" Association="Self.Shops_Warehouses">
+            <End Role="Warehouses" EntitySet="Warehouses" />
+            <End Role="Shops" EntitySet="Shops" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MShopModelStoreContainer" CdmEntityContainer="MShopEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MShopModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="MShopModel.Shops">
+              <MappingFragment StoreEntitySet="Shops">
+                <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MShopModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouses">
+            <EntityTypeMapping TypeName="MShopModel.Warehouses">
+              <MappingFragment StoreEntitySet="Warehouses">
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Shops">
+            <EntityTypeMapping TypeName="MShopModel.Products_Shops">
+              <MappingFragment StoreEntitySet="Products_Shops">
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Warehouses">
+            <EntityTypeMapping TypeName="MShopModel.Products_Warehouses">
+              <MappingFragment StoreEntitySet="Products_Warehouses">
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Shops_Warehouses" TypeName="MShopModel.Shops_Warehouses" StoreEntitySet="Shops_Warehouses">
+            <EndProperty Name="Warehouses">
+              <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+            </EndProperty>
+            <EndProperty Name="Shops">
+              <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
