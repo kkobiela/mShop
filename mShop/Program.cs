@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using mShop.Models;
+using mShop.Presenters;
+using System;
 using System.Windows.Forms;
 
 namespace mShop
@@ -16,7 +15,12 @@ namespace mShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Model model = new Model();
+            MainView view = new MainView();
+            MainPresenter presenter = new MainPresenter(model, view);
+
+            Application.Run(view);
         }
     }
 }
