@@ -12,10 +12,10 @@ namespace mShop.Presenters
 
     public class LoginControlPresenter : IPresenter
     {
-        private LoginViewControl _view;
+        private LoginControlView _view;
         private Model _model;
 
-        public LoginControlPresenter(Model model, LoginViewControl view)
+        public LoginControlPresenter(Model model, LoginControlView view)
         {
             _view = view;
             _model = model;
@@ -48,8 +48,7 @@ namespace mShop.Presenters
 
         void View_Login(object sender, LoginEventArgs e)
         {
-            LoginViewControl lc = sender as LoginViewControl;
-
+            LoginControlView lc = sender as LoginControlView;
             if (lc != null)
             {
                 if (CorrectUsernameAndPassword(e.Username, e.Password))

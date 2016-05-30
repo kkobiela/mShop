@@ -15,7 +15,6 @@ namespace mShop
 {
     public partial class MainView : Form
     {
-        //private LoginControl loginControl;
         public MainPresenter Presenter{ get; set;}
         public MainView()
         {
@@ -24,7 +23,7 @@ namespace mShop
     
         public void InitializeLoginView()
         {
-            LoginViewControl loginViewControl = new LoginViewControl();
+            LoginControlView loginViewControl = new LoginControlView();
             loginViewControl.Location = new System.Drawing.Point(125, 65);
             loginViewControl.Name = "loginControl";
             loginViewControl.Size = new System.Drawing.Size(150, 150);

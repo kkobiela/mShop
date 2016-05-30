@@ -11,9 +11,9 @@ using mShop.Presenters;
 
 namespace mShop.Views
 {
-    public partial class LoginViewControl : UserControl, ILoginView, IView
+    public partial class LoginControlView : UserControl, ILoginView, IView
     {
-        public LoginViewControl()
+        public LoginControlView()
         {
             InitializeComponent();
             Type = Type.Login;

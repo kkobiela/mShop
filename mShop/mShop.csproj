@@ -61,11 +61,11 @@
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IView.cs" />
-    <Compile Include="Views\LoginViewControl.cs">
+    <Compile Include="Views\LoginControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\LoginViewControl.Designer.cs">
-      <DependentUpon>LoginViewControl.cs</DependentUpon>
+    <Compile Include="Views\LoginControlView.Designer.cs">
+      <DependentUpon>LoginControlView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -117,8 +117,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\LoginViewControl.resx">
-      <DependentUpon>LoginViewControl.cs</DependentUpon>
+    <EmbeddedResource Include="Views\LoginControlView.resx">
+      <DependentUpon>LoginControlView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

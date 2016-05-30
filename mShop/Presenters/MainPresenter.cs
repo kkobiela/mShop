@@ -28,7 +28,7 @@ namespace mShop.Presenters
             switch (view.Type)
             {
                 case Views.Type.Login:
-                    CurrentPresenter = new LoginControlPresenter(_model, (LoginViewControl)view);
+                    CurrentPresenter = new LoginControlPresenter(_model, (LoginControlView)view);
                     break;
                 case Views.Type.User:
                     break;
