@@ -59,6 +59,7 @@
     <Compile Include="Presenters\IPresenter.cs" />
     <Compile Include="Presenters\LoginControlPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\UserControlPresenter.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\LoginControlView.cs">
@@ -105,6 +106,12 @@
     <Compile Include="Users.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControlView.Designer.cs">
+      <DependentUpon>UserControlView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouses.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>
@@ -122,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControlView.resx">
+      <DependentUpon>UserControlView.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="MShopEntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

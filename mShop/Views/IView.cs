@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace mShop.Views
 {
 
-    public enum Type
+    public enum ViewType
     {
         Login,
         User
@@ -15,7 +15,7 @@ namespace mShop.Views
 
     public interface IView
     {
-        Type Type { get; set; }
+        ViewType Type { get; set; }
         void UpdateData();
         void SetError();
     }

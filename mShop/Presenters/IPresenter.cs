@@ -10,5 +10,14 @@ namespace mShop.Presenters
     {
         void UpdateView(string data);
         void UpdateView(List<string> data);
+
+        event EventHandler ViewChanged;
+
+        
+    }
+
+    class ViewChangedArgs : EventArgs
+    {
+       // Views.Type 
     }
 }

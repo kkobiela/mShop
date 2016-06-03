@@ -7,21 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using mShop.Presenters;
 
 namespace mShop.Views
 {
-    public partial class LoginControlView : UserControl, ILoginView, IView
+    public partial class UserControlView : UserControl, IView
     {
-        public LoginControlView()
+        public UserControlView()
         {
             InitializeComponent();
-            Type = ViewType.Login;
+            Type = ViewType.User;
         }
 
         public ViewType Type { get; set; }
-
-        public event EventHandler<LoginEventArgs> Login;
 
         public void SetError()
         {
@@ -32,16 +29,5 @@ namespace mShop.Views
         {
             throw new NotImplementedException();
         }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-
-            if(btn != null)
-            {
-                Login?.Invoke(this, new LoginEventArgs(tbLogin.Text, tbPassword.Text));
-            }
-        }
-
     }
 }

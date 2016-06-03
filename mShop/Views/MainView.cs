@@ -23,14 +23,39 @@ namespace mShop
     
         public void InitializeLoginView()
         {
-            LoginControlView loginViewControl = new LoginControlView();
-            loginViewControl.Location = new System.Drawing.Point(125, 65);
-            loginViewControl.Name = "loginControl";
-            loginViewControl.Size = new System.Drawing.Size(150, 150);
-            loginViewControl.TabIndex = 0;
-            Controls.Add(loginViewControl);
-            Presenter.InitializePresenter(loginViewControl);        
+            string controlName = "viewControl";
+            RemoveViewControl(controlName);
+            LoginControlView viewControl = new LoginControlView();
+            viewControl.Name = "viewControl";
+            viewControl.Location = new System.Drawing.Point(125, 65);
+            viewControl.Size = new System.Drawing.Size(150, 150);
+            viewControl.TabIndex = 0;
+            Controls.Add(viewControl);
+            Presenter.InitializePresenter(viewControl);
         }
 
+        public void InitializeUserView()
+        {
+            string controlName = "viewControl";
+            RemoveViewControl(controlName);
+            UserControlView viewControl = new UserControlView();
+            viewControl.Name = "viewControl";
+            viewControl.Location = new System.Drawing.Point(125, 65);
+            viewControl.Size = new System.Drawing.Size(150, 150);
+            viewControl.TabIndex = 0;
+            Controls.Add(viewControl);
+            Presenter.InitializePresenter(viewControl);
+        }
+
+        private void RemoveViewControl(string controlName)
+        {
+            foreach (Control item in this.Controls)
+            {
+                if(item.Name == controlName)
+                {
+                    Controls.Remove(item);
+                }
+            }
+        }
     }
 }

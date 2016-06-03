@@ -12,6 +12,7 @@ namespace mShop.Presenters
     {
         private Model _model;
         private MainView _view;
+        private Dictionary<ViewType, Action> ViewsDict;
 
         public IPresenter CurrentPresenter { get; set; }
 
@@ -21,20 +22,35 @@ namespace mShop.Presenters
             _view = view;
             _view.Presenter = this;
             _view.InitializeLoginView();
+
+            ViewsDict = new Dictionary<ViewType, Action>
+            {
+                {ViewType.Login, _view.InitializeLoginView},
+                {ViewType.User, _view.InitializeUserView}
+                
+            };
         }
 
         public void InitializePresenter(IView view)
         {
             switch (view.Type)
             {
-                case Views.Type.Login:
+                case Views.ViewType.Login:
                     CurrentPresenter = new LoginControlPresenter(_model, (LoginControlView)view);
+                    CurrentPresenter.ViewChanged += ViewChanged;
                     break;
-                case Views.Type.User:
+                case Views.ViewType.User:
+                    CurrentPresenter = new UserControlPresenter(_model, (UserControlView)view);
+                    CurrentPresenter.ViewChanged += ViewChanged;
                     break;
                 default:
                     break;
             }
+        }
+
+        public void ViewChanged(object sender, EventArgs e)
+        {
+            ViewsDict[ViewType.User].Invoke();
         }
     }
 }

@@ -15,6 +15,8 @@ namespace mShop.Presenters
         private LoginControlView _view;
         private Model _model;
 
+        public event EventHandler ViewChanged;
+
         public LoginControlPresenter(Model model, LoginControlView view)
         {
             _view = view;
@@ -38,6 +40,7 @@ namespace mShop.Presenters
             password.Trim();
             if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
+                ViewChanged?.Invoke(this, new EventArgs());
                 return false;
             }
             else
@@ -57,9 +60,6 @@ namespace mShop.Presenters
                 }
             }
         }
-
-
-
 
     }
 }
