@@ -13,10 +13,10 @@ namespace mShop
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MShopEntities : DbContext
+    public partial class mshopEntities : DbContext
     {
-        public MShopEntities()
-            : base("name=MShopEntities")
+        public mshopEntities()
+            : base("name=mshopEntities")
         {
         }
     

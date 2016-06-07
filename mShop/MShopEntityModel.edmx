@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MShopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mshopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="P_Id" />
           </Key>
           <Property Name="P_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="30" Scale="2" Nullable="false" />
           <Property Name="Category" Type="enum" Nullable="false" />
           <Property Name="Barcode" Type="char" MaxLength="13" />
@@ -175,7 +176,7 @@ warning 6002: The table/view 'def.mshop.Shops_Warehouses' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MShopModelStoreContainer">
+        <EntityContainer Name="mshopModelStoreContainer">
           <EntitySet Name="Products" EntityType="Self.Products" Schema="mshop" store:Type="Tables" />
           <EntitySet Name="Shops" EntityType="Self.Shops" Schema="mshop" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="mshop" store:Type="Tables" />
@@ -237,13 +238,14 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="mshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="P_Id" />
           </Key>
           <Property Name="P_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" />
           <Property Name="Category" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Barcode" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
@@ -388,7 +390,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
           <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="*" />
           <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="MShopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="mshopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="Shops" EntityType="Self.Shops" />
           <EntitySet Name="Users" EntityType="Self.Users" />
@@ -429,12 +431,13 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MShopModelStoreContainer" CdmEntityContainer="MShopEntities">
+        <EntityContainerMapping StorageEntityContainer="mshopModelStoreContainer" CdmEntityContainer="mshopEntities">
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="MShopModel.Products">
+            <EntityTypeMapping TypeName="mshopModel.Products">
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="P_Id" ColumnName="P_Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
@@ -443,7 +446,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shops">
-            <EntityTypeMapping TypeName="MShopModel.Shops">
+            <EntityTypeMapping TypeName="mshopModel.Shops">
               <MappingFragment StoreEntitySet="Shops">
                 <ScalarProperty Name="S_Id" ColumnName="S_Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -452,7 +455,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MShopModel.Users">
+            <EntityTypeMapping TypeName="mshopModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="U_Id" ColumnName="U_Id" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
@@ -465,7 +468,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Warehouses">
-            <EntityTypeMapping TypeName="MShopModel.Warehouses">
+            <EntityTypeMapping TypeName="mshopModel.Warehouses">
               <MappingFragment StoreEntitySet="Warehouses">
                 <ScalarProperty Name="W_Id" ColumnName="W_Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -475,7 +478,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products_Shops">
-            <EntityTypeMapping TypeName="MShopModel.Products_Shops">
+            <EntityTypeMapping TypeName="mshopModel.Products_Shops">
               <MappingFragment StoreEntitySet="Products_Shops">
                 <ScalarProperty Name="P_Id" ColumnName="P_Id" />
                 <ScalarProperty Name="S_Id" ColumnName="S_Id" />
@@ -484,7 +487,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products_Warehouses">
-            <EntityTypeMapping TypeName="MShopModel.Products_Warehouses">
+            <EntityTypeMapping TypeName="mshopModel.Products_Warehouses">
               <MappingFragment StoreEntitySet="Products_Warehouses">
                 <ScalarProperty Name="P_Id" ColumnName="P_Id" />
                 <ScalarProperty Name="W_Id" ColumnName="W_Id" />
@@ -492,7 +495,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Shops_Warehouses" TypeName="MShopModel.Shops_Warehouses" StoreEntitySet="Shops_Warehouses">
+          <AssociationSetMapping Name="Shops_Warehouses" TypeName="mshopModel.Shops_Warehouses" StoreEntitySet="Shops_Warehouses">
             <EndProperty Name="Warehouses">
               <ScalarProperty Name="W_Id" ColumnName="W_Id" />
             </EndProperty>
