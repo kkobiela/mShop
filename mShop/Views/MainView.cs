@@ -19,6 +19,7 @@ namespace mShop
         public MainView()
         {
             InitializeComponent();
+            ConnectDB();
         }
     
         public void InitializeLoginView()
@@ -55,6 +56,14 @@ namespace mShop
                 {
                     Controls.Remove(item);
                 }
+            }
+        }
+
+        public void ConnectDB()
+        {
+            using (var db = new mshopEntities("root", "asd"))
+            {
+                db.Database.Connection.Open();
             }
         }
     }

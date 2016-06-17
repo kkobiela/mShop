@@ -12,14 +12,34 @@ namespace mShop
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Configuration;
+    using System.Data.EntityClient;
+    using System.Data.Common;
     public partial class mshopEntities : DbContext
     {
+      //  public mshopEntities()
+      //     : base("name = mshopEntities")
+      //  { }
+
         public mshopEntities()
-            : base("name=mshopEntities")
+           : base(GetConnectionString())
+        { }
+        
+
+        public mshopEntities(string username, string password)
+            : base(GetConnectionString(username, password))
+        { }
+
+        public static string GetConnectionString()
         {
+            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id=root;database=MShop'";
         }
-    
+
+        public static string GetConnectionString(string username, string password)
+        {
+            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id="+username+";password="+password+";database=MShop'";
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -40,7 +40,7 @@ namespace mShop.Presenters
             password.Trim();
             if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                ViewChanged?.Invoke(this, new EventArgs());
+                //ViewChanged?.Invoke(this, new EventArgs());
                 return false;
             }
             else
