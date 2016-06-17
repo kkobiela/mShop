@@ -38,7 +38,7 @@ namespace mShop
         {
             string controlName = "viewControl";
             RemoveViewControl(controlName);
-            UserControlView viewControl = new UserControlView();
+            ShopControlView viewControl = new ShopControlView();
             viewControl.Name = "viewControl";
             viewControl.Location = new System.Drawing.Point(125, 65);
             viewControl.Size = new System.Drawing.Size(150, 150);

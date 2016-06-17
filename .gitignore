@@ -49,5 +49,7 @@ Temporary Items
 # Others
 mShop/bin
 mShop/obj
+mShopTests/bin
+mShopTests/obj
 packages
 .vs/mShop/v14/.suo

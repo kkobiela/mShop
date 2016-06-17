@@ -26,7 +26,7 @@ namespace mShop.Presenters
             ViewsDict = new Dictionary<ViewType, Action>
             {
                 {ViewType.Login, _view.InitializeLoginView},
-                {ViewType.User, _view.InitializeUserView}
+                {ViewType.Shop, _view.InitializeUserView}
                 
             };
         }
@@ -39,8 +39,8 @@ namespace mShop.Presenters
                     CurrentPresenter = new LoginControlPresenter(_model, (LoginControlView)view);
                     CurrentPresenter.ViewChanged += ViewChanged;
                     break;
-                case Views.ViewType.User:
-                    CurrentPresenter = new UserControlPresenter(_model, (UserControlView)view);
+                case Views.ViewType.Shop:
+                    CurrentPresenter = new ShopControlPresenter(_model, (ShopControlView)view);
                     CurrentPresenter.ViewChanged += ViewChanged;
                     break;
                 default:

@@ -10,7 +10,7 @@ namespace mShop.Views
     public enum ViewType
     {
         Login,
-        User
+        Shop
     }
 
     public interface IView

@@ -1,6 +1,6 @@
 ﻿namespace mShop.Views
 {
-    partial class UserControlView
+    partial class ShopControlView
     {
         /// <summary> 
         /// Required designer variable.

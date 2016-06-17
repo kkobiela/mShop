@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace mShop.Presenters
 {
-    class UserControlPresenter : IPresenter
+    class ShopControlPresenter : IPresenter
     {
         public event EventHandler<ViewChangedArgs> ViewChanged;
-        private UserControlView _view;
+        private ShopControlView _view;
         private Model _model;
 
-        public UserControlPresenter(Model model, UserControlView view)
+        public ShopControlPresenter(Model model, ShopControlView view)
         {
             _view = view;
             _model = model;

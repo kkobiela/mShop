@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace mShop.Views
 {
-    public partial class UserControlView : UserControl, IView
+    public partial class ShopControlView : UserControl, IView
     {
-        public UserControlView()
+        public ShopControlView()
         {
             InitializeComponent();
-            Type = ViewType.User;
+            Type = ViewType.Shop;
         }
 
         public ViewType Type { get; set; }
