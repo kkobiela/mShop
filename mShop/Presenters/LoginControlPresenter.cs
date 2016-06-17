@@ -15,7 +15,7 @@ namespace mShop.Presenters
         private LoginControlView _view;
         private Model _model;
 
-        public event EventHandler ViewChanged;
+        public event EventHandler<ViewChangedArgs> ViewChanged;
 
         public LoginControlPresenter(Model model, LoginControlView view)
         {
@@ -23,6 +23,7 @@ namespace mShop.Presenters
             _model = model;
             _view.Login += View_Login;
         }
+
 
         public void UpdateView(List<string> data)
         {
@@ -38,14 +39,17 @@ namespace mShop.Presenters
         {
             username.Trim();
             password.Trim();
-            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if(!string.IsNullOrEmpty(username) )//|| string.IsNullOrEmpty(password))
             {
-                //ViewChanged?.Invoke(this, new EventArgs());
+                if(_model.UserExists(username, password))
+                {
+                    return true;
+                }
                 return false;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -56,7 +60,8 @@ namespace mShop.Presenters
             {
                 if (CorrectUsernameAndPassword(e.Username, e.Password))
                 {
-                    _view.UpdateData();
+                    ViewChangedArgs args = new ViewChangedArgs(ViewType.User);
+                    ViewChanged?.Invoke(this, args);
                 }
             }
         }

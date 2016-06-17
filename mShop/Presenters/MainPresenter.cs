@@ -48,9 +48,9 @@ namespace mShop.Presenters
             }
         }
 
-        public void ViewChanged(object sender, EventArgs e)
+        public void ViewChanged(object sender, ViewChangedArgs e)
         {
-            ViewsDict[ViewType.User].Invoke();
+            ViewsDict[e.ViewType].Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mShop.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,17 @@ namespace mShop.Presenters
         void UpdateView(string data);
         void UpdateView(List<string> data);
 
-        event EventHandler ViewChanged;
+        event EventHandler<ViewChangedArgs> ViewChanged;
 
         
     }
 
-    class ViewChangedArgs : EventArgs
+    public class ViewChangedArgs : EventArgs
     {
-       // Views.Type 
+       public ViewType ViewType { get; private set; }
+       public ViewChangedArgs(ViewType viewType)
+        {
+            ViewType = viewType;
+        }
     }
 }

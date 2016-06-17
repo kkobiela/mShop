@@ -10,7 +10,7 @@ namespace mShop.Presenters
 {
     class UserControlPresenter : IPresenter
     {
-        public event EventHandler ViewChanged;
+        public event EventHandler<ViewChangedArgs> ViewChanged;
         private UserControlView _view;
         private Model _model;
 

@@ -30,6 +30,12 @@ namespace mShop
             : base(GetConnectionString(username, password))
         { }
 
+        public void SetCommandTimeOut(int Timeout)
+        {
+            var objectContext = (this as IObjectContextAdapter).ObjectContext;
+            objectContext.CommandTimeout = Timeout;
+        }
+
         public static string GetConnectionString()
         {
             return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id=root;database=MShop'";
