@@ -19,6 +19,12 @@ namespace mShop
         public MainView()
         {
             InitializeComponent();
+
+            using (var db = new mshopEntities())
+            {
+                List<products_in_shop> items = db.products_in_shop.Where(item => item.Id == 2).ToList();
+                Console.WriteLine(items[0].Name);
+            }
         }
     
         public void InitializeLoginView()

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mshopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mshopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="P_Id" />
@@ -79,6 +79,50 @@ warning 6002: The table/view 'def.mshop.Shops_Warehouses' does not have a primar
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Category" Type="set" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mshop.products_in_shop' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="products_in_shop">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="S_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" Nullable="false" />
+          <Property Name="Category" Type="enum" Nullable="false" />
+          <Property Name="Barcode" Type="char" MaxLength="13" />
+          <Property Name="Thumbnail" Type="blob" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="S_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mshop.products_in_warehouse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="products_in_warehouse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="W_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" Nullable="false" />
+          <Property Name="Category" Type="enum" Nullable="false" />
+          <Property Name="Barcode" Type="char" MaxLength="13" />
+          <Property Name="Thumbnail" Type="blob" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="products_shops_ibfk_1">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
@@ -201,6 +245,32 @@ FROM `Products_Warehouses` AS `Products_Warehouses`</DefiningQuery>
 `Shops_Warehouses`.`W_Id`
 FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="products_in_shop" EntityType="Self.products_in_shop" store:Type="Views" store:Schema="mshop">
+            <DefiningQuery>SELECT
+`products_in_shop`.`Id`, 
+`products_in_shop`.`Name`, 
+`products_in_shop`.`Brand`, 
+`products_in_shop`.`Price`, 
+`products_in_shop`.`Category`, 
+`products_in_shop`.`Barcode`, 
+`products_in_shop`.`Thumbnail`, 
+`products_in_shop`.`Quantity`, 
+`products_in_shop`.`S_Id`
+FROM `products_in_shop` AS `products_in_shop`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="products_in_warehouse" EntityType="Self.products_in_warehouse" store:Type="Views" store:Schema="mshop">
+            <DefiningQuery>SELECT
+`products_in_warehouse`.`Id`, 
+`products_in_warehouse`.`Name`, 
+`products_in_warehouse`.`Brand`, 
+`products_in_warehouse`.`Price`, 
+`products_in_warehouse`.`Category`, 
+`products_in_warehouse`.`Barcode`, 
+`products_in_warehouse`.`Thumbnail`, 
+`products_in_warehouse`.`Quantity`, 
+`products_in_warehouse`.`W_Id`
+FROM `products_in_warehouse` AS `products_in_warehouse`</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="products_shops_ibfk_1" Association="Self.products_shops_ibfk_1">
             <End Role="Products" EntitySet="Products" />
             <End Role="Products_Shops" EntitySet="Products_Shops" />
@@ -234,8 +304,7 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -425,7 +494,49 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
             <End Role="Warehouses" EntitySet="Warehouses" />
             <End Role="Shops" EntitySet="Shops" />
           </AssociationSet>
+          <EntitySet Name="products_in_shop" EntityType="mshopModel.products_in_shop" />
+          <EntitySet Name="products_in_warehouse" EntityType="mshopModel.products_in_warehouse" />
         </EntityContainer>
+        <EntityType Name="products_in_shop">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="S_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="Barcode" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="S_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products_in_warehouse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="W_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="Barcode" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -503,6 +614,36 @@ FROM `Shops_Warehouses` AS `Shops_Warehouses`</DefiningQuery>
               <ScalarProperty Name="S_Id" ColumnName="S_Id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="products_in_shop">
+            <EntityTypeMapping TypeName="mshopModel.products_in_shop">
+              <MappingFragment StoreEntitySet="products_in_shop">
+                <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products_in_warehouse">
+            <EntityTypeMapping TypeName="mshopModel.products_in_warehouse">
+              <MappingFragment StoreEntitySet="products_in_warehouse">
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -18,6 +18,8 @@
         <AssociationConnector Association="mshopModel.users_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="mshopModel.products_warehouses_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="mshopModel.Shops_Warehouses" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mshopModel.products_in_shop" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="mshopModel.products_in_warehouse" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

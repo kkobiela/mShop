@@ -79,6 +79,12 @@
     <Compile Include="Products.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="products_in_shop.cs">
+      <DependentUpon>MShopEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_in_warehouse.cs">
+      <DependentUpon>MShopEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Products_Shops.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>

@@ -12,22 +12,16 @@ namespace mShop
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Configuration;
-    using System.Data.EntityClient;
-    using System.Data.Common;
+    
     public partial class mshopEntities : DbContext
     {
-      //  public mshopEntities()
-      //     : base("name = mshopEntities")
-      //  { }
-
         public mshopEntities()
-           : base(GetConnectionString())
-        { }
-        
+            : base(GetConnectionString())
+        {
+        }
 
         public mshopEntities(string username, string password)
-            : base(GetConnectionString(username, password))
+           : base(GetConnectionString(username, password))
         { }
 
         public void SetCommandTimeOut(int Timeout)
@@ -43,7 +37,7 @@ namespace mShop
 
         public static string GetConnectionString(string username, string password)
         {
-            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id="+username+";password="+password+";database=MShop'";
+            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id=" + username + ";password=" + password + ";database=MShop'";
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -57,5 +51,7 @@ namespace mShop
         public DbSet<Warehouses> Warehouses { get; set; }
         public DbSet<Products_Shops> Products_Shops { get; set; }
         public DbSet<Products_Warehouses> Products_Warehouses { get; set; }
+        public DbSet<products_in_shop> products_in_shop { get; set; }
+        public DbSet<products_in_warehouse> products_in_warehouse { get; set; }
     }
 }
