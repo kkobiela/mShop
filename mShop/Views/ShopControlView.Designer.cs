@@ -28,53 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.cbSearchOptions = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.pageChangerControl1 = new mShop.Views.PageChangerControl();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // tbSearch
+            // textBox1
             // 
-            this.tbSearch.Location = new System.Drawing.Point(3, 3);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(100, 20);
-            this.tbSearch.TabIndex = 0;
+            this.textBox1.Location = new System.Drawing.Point(20, 57);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
-            // cbSearchOptions
-            // 
-            this.cbSearchOptions.FormattingEnabled = true;
-            this.cbSearchOptions.Location = new System.Drawing.Point(110, 4);
-            this.cbSearchOptions.Name = "cbSearchOptions";
-            this.cbSearchOptions.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchOptions.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(524, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // pageChangerControl1
-            // 
-            this.pageChangerControl1.Location = new System.Drawing.Point(3, 373);
-            this.pageChangerControl1.Name = "pageChangerControl1";
-            this.pageChangerControl1.Size = new System.Drawing.Size(580, 29);
-            this.pageChangerControl1.TabIndex = 3;
-            // 
-            // ShopControlView
+            // UserControlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pageChangerControl1);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.cbSearchOptions);
-            this.Controls.Add(this.tbSearch);
-            this.Name = "ShopControlView";
-            this.Size = new System.Drawing.Size(602, 405);
+            this.Controls.Add(this.textBox1);
+            this.Name = "UserControlView";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,9 +51,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.ComboBox cbSearchOptions;
-        private System.Windows.Forms.Button btnSearch;
-        private PageChangerControl pageChangerControl1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
