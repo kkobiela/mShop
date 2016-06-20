@@ -16,8 +16,8 @@ namespace mShop
     {
         public Warehouses()
         {
-            this.Users = new HashSet<Users>();
             this.Products_Warehouses = new HashSet<Products_Warehouses>();
+            this.Users = new HashSet<Users>();
             this.Shops = new HashSet<Shops>();
         }
     
@@ -26,8 +26,8 @@ namespace mShop
         public string City { get; set; }
         public string Category { get; set; }
     
-        public virtual ICollection<Users> Users { get; set; }
         public virtual ICollection<Products_Warehouses> Products_Warehouses { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
         public virtual ICollection<Shops> Shops { get; set; }
     }
 }
