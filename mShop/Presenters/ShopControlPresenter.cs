@@ -18,16 +18,26 @@ namespace mShop.Presenters
         {
             _view = view;
             _model = model;
+            _model.OpenConnection(ConnectionType.Shop);
+            UpdateProductsList();
+            _view.ForceUpdateProductsList += UpdateProductsList;
         }
 
         public void UpdateView(List<string> data)
         {
             throw new NotImplementedException();
         }
+        
+        public void UpdateProductsList()
+        {
+            _view.UpdateProductsList(_model.ShopModel.GetProducts());
+        }
 
         public void UpdateView(string data)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

@@ -22,6 +22,7 @@ namespace mShop.Presenters
             _view = view;
             _model = model;
             _view.Login += View_Login;
+            
         }
 
 
@@ -60,6 +61,8 @@ namespace mShop.Presenters
             {
                 if (CorrectUsernameAndPassword(e.Username, e.Password))
                 {
+                    _model.Login = e.Username;
+                    _model.Password = e.Password;
                     ViewChangedArgs args = new ViewChangedArgs(ViewType.Shop);
                     ViewChanged?.Invoke(this, args);
                 }

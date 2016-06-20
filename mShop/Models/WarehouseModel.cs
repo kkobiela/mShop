@@ -56,11 +56,11 @@ namespace mShop.Models
             }
         }
 
-        public List<products_in_warehouse> GetProductsByCathegory(string productCathegory)
+        public List<products_in_warehouse> GetProductsByCategory(string productCategory)
         {
             try
             {
-                List<products_in_warehouse> products = db.products_in_warehouse.Where(item => item.W_Id == currentWarehouse && item.Category == productCathegory).ToList();
+                List<products_in_warehouse> products = db.products_in_warehouse.Where(item => item.W_Id == currentWarehouse && item.Category == productCategory).ToList();
                 return products;
             }
             catch

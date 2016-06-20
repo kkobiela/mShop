@@ -20,12 +20,12 @@ namespace mShop.Models
         private string loginuser = "Login_User";
         private string loginpassword = "login";
 
-        #region Propertis
+        #region Properties
 
-        public string Login{ private get;set;}
+        public string Login{ private get; set;}
         public string Password { private get; set; }
 
-        public ShopModel ShopModel { get; private set;}
+        public ShopModel ShopModel { get; private set; }
         public WarehouseModel WarehouseModel {get; private set;}
 
         #endregion
@@ -77,18 +77,19 @@ namespace mShop.Models
             }
         }
 
-        private int GetUserShopId(string login)
+        private int? GetUserShopId(string login)
         {
             using (var db = new mshopEntities(loginuser, loginpassword))
             {
                 try
                 {
-                    int user = Convert.ToUInt16(db.Users.Where(item => item.Login == login).Select(item => item.S_Id));
-                    return user;
+                    var user = db.Users.Where(item => item.Login == login).ToList();
+                    int? shopId = user[0].S_Id;
+                    return shopId;
                 }
-                catch
+                catch(Exception e)
                 {
-                    return 0;
+                    throw new NotImplementedException();
                 }
             }
         }

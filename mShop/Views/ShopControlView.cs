@@ -20,11 +20,19 @@ namespace mShop.Views
             { "Komputer Krzyśka", "Apple Inc."}
         };
 
+        private int currentPage = 0;
+
+        public void ChangeCurrentPage(object sender, PageChangedArgs e)
+        {
+            currentPage = sender != null ? e.CurrentPage : 0;
+            ForceUpdateProductsList?.Invoke();
+        }
+
         public ShopControlView()
         {
             InitializeComponent();
             Type = ViewType.Shop;
-            UpdateProductsList(_productList);
+            pageChangerControl.PageChanged += ChangeCurrentPage;
         }
 
         public ViewType Type { get; set; }
@@ -39,17 +47,29 @@ namespace mShop.Views
             throw new NotImplementedException();
         }
 
-        public void UpdateProductsList(Dictionary<string, string> list)
+        public void UpdateProductsList(List<products_in_shop> list)
         {
 
-            int y = 50;
-            foreach (var x in list.ToList().GetRange(1, 2))
+            int y = 0;
+            for(int i = 0; i<gbProductsList.Controls.Count; i++)
             {
-                var control = new ProductControl(x.Key, x.Value);
+                gbProductsList.Controls.Remove(gbProductsList.Controls[i]);
+            }
+
+            foreach (var x in list.ToList().GetRange(currentPage * 8, 8))
+            {
+                var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
-                this.Controls.Add(control);
+                this.gbProductsList.Controls.Add(control);
                 y += 37;
             }
+        }
+
+        public event Action ForceUpdateProductsList;
+
+        private void pageChangerControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

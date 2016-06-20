@@ -8,11 +8,11 @@ namespace mShop.Models
 {
     public class ShopModel
     {
-        private int currentShop;
+        private int? currentShop;
         private mshopEntities db;
 
 
-        public ShopModel(mshopEntities database, int cS)
+        public ShopModel(mshopEntities database, int? cS)
         {
             db = database;
             currentShop = cS;
@@ -57,11 +57,11 @@ namespace mShop.Models
             }
         }
 
-        public List<products_in_shop> GetProductsByCathegory(string productCathegory)
+        public List<products_in_shop> GetProductsByCategory(string productCategory)
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category == productCathegory).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category == productCategory).ToList();
                 return products;
             }
             catch

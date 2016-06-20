@@ -17,6 +17,8 @@ namespace mShop.Views
         {
             InitializeComponent();
             Type = ViewType.Login;
+            tbLogin.Text = "Karol_Bok";
+            tbPassword.Text = "bok";
         }
 
         public ViewType Type { get; set; }

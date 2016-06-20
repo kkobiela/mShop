@@ -31,7 +31,8 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.cbSearchOptions = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.pageChangerControl1 = new mShop.Views.PageChangerControl();
+            this.pageChangerControl = new mShop.Views.PageChangerControl();
+            this.gbProductsList = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // tbSearch
@@ -58,18 +59,27 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // pageChangerControl1
+            // pageChangerControl
             // 
-            this.pageChangerControl1.Location = new System.Drawing.Point(3, 373);
-            this.pageChangerControl1.Name = "pageChangerControl1";
-            this.pageChangerControl1.Size = new System.Drawing.Size(580, 29);
-            this.pageChangerControl1.TabIndex = 3;
+            this.pageChangerControl.Location = new System.Drawing.Point(3, 373);
+            this.pageChangerControl.Name = "pageChangerControl";
+            this.pageChangerControl.Size = new System.Drawing.Size(580, 29);
+            this.pageChangerControl.TabIndex = 3;
+            // 
+            // gbProductsList
+            // 
+            this.gbProductsList.Location = new System.Drawing.Point(3, 31);
+            this.gbProductsList.Name = "gbProductsList";
+            this.gbProductsList.Size = new System.Drawing.Size(596, 336);
+            this.gbProductsList.TabIndex = 4;
+            this.gbProductsList.TabStop = false;
             // 
             // ShopControlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pageChangerControl1);
+            this.Controls.Add(this.gbProductsList);
+            this.Controls.Add(this.pageChangerControl);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbSearchOptions);
             this.Controls.Add(this.tbSearch);
@@ -85,6 +95,7 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.ComboBox cbSearchOptions;
         private System.Windows.Forms.Button btnSearch;
-        private PageChangerControl pageChangerControl1;
+        private PageChangerControl pageChangerControl;
+        private System.Windows.Forms.GroupBox gbProductsList;
     }
 }

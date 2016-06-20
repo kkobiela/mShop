@@ -12,9 +12,34 @@ namespace mShop.Views
 {
     public partial class PageChangerControl : UserControl
     {
+        private int _currentPage = 0;
+
         public PageChangerControl()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler<PageChangedArgs> PageChanged;
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            _currentPage += 1;
+            PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+        }
+
+        private void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            _currentPage -= 1;
+            PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+        }
+    }
+
+    public class PageChangedArgs
+    {
+        public int CurrentPage { get; private set; }
+        public PageChangedArgs(int currentPage)
+        {
+            CurrentPage = currentPage;
         }
     }
 }

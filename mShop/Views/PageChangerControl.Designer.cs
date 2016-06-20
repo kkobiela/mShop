@@ -51,6 +51,7 @@
             this.btnNextPage.TabIndex = 7;
             this.btnNextPage.Text = ">";
             this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // btnPreviousPage
             // 
@@ -60,6 +61,7 @@
             this.btnPreviousPage.TabIndex = 6;
             this.btnPreviousPage.Text = "<";
             this.btnPreviousPage.UseVisualStyleBackColor = true;
+            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
             // 
             // lbNumberOfPages
             // 
