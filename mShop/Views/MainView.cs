@@ -33,8 +33,8 @@ namespace mShop
             RemoveViewControl(controlName);
             LoginControlView viewControl = new LoginControlView();
             viewControl.Name = "viewControl";
-            viewControl.Location = new System.Drawing.Point(125, 65);
-            viewControl.Size = new System.Drawing.Size(150, 150);
+            viewControl.Location = new System.Drawing.Point(0, 0);
+            //viewControl.Size = new System.Drawing.Size(150, 150);
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);
@@ -46,8 +46,8 @@ namespace mShop
             RemoveViewControl(controlName);
             ShopControlView viewControl = new ShopControlView();
             viewControl.Name = "viewControl";
-            viewControl.Location = new System.Drawing.Point(125, 65);
-            viewControl.Size = new System.Drawing.Size(150, 150);
+            viewControl.Location = new System.Drawing.Point(0, 0);
+            //viewControl.Size = new System.Drawing.Size(150, 150);
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);
