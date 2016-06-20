@@ -46,11 +46,11 @@ namespace mShop
         }
     
         public DbSet<Products> Products { get; set; }
+        public DbSet<Products_Shops> Products_Shops { get; set; }
+        public DbSet<Products_Warehouses> Products_Warehouses { get; set; }
         public DbSet<Shops> Shops { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<Warehouses> Warehouses { get; set; }
-        public DbSet<Products_Shops> Products_Shops { get; set; }
-        public DbSet<Products_Warehouses> Products_Warehouses { get; set; }
         public DbSet<products_in_shop> products_in_shop { get; set; }
         public DbSet<products_in_warehouse> products_in_warehouse { get; set; }
     }

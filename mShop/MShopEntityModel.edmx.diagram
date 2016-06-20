@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="05393c45bcb24cef99bef5e9f953d395" Name="Diagram1">
-        <EntityTypeShape EntityType="mshopModel.Products" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mshopModel.Shops" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mshopModel.Users" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mshopModel.Warehouses" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mshopModel.Products_Shops" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="mshopModel.Products_Warehouses" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
-        <AssociationConnector Association="mshopModel.products_shops_ibfk_1" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.products_warehouses_ibfk_1" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.products_shops_ibfk_2" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.users_ibfk_1" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.users_ibfk_2" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.products_warehouses_ibfk_2" ManuallyRouted="false" />
-        <AssociationConnector Association="mshopModel.Shops_Warehouses" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="mshopModel.products_in_shop" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="mshopModel.products_in_warehouse" Width="1.5" PointX="7.375" PointY="0.75" />
+      <Diagram DiagramId="e13801b1967743f291ed93df5a4f0c8c" Name="Diagram1">
+        <EntityTypeShape EntityType="MShopModel.Products" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.Products_Shops" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.Products_Warehouses" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.Shops" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.Users" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.Warehouses" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.products_in_shop" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MShopModel.products_in_warehouse" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="MShopModel.products_shops_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.products_warehouses_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.products_shops_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.products_warehouses_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.users_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.users_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="MShopModel.shops_warehouses" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

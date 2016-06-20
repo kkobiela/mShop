@@ -17,6 +17,7 @@ namespace mShop
         public int P_Id { get; set; }
         public int S_Id { get; set; }
         public int Quantity { get; set; }
+        public int PS_Id { get; set; }
     
         public virtual Products Products { get; set; }
         public virtual Shops Shops { get; set; }
