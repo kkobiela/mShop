@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ConstantTexts.cs" />
+    <Compile Include="Constants\ConstantValues.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\ShopModel.cs" />
     <Compile Include="Models\WarehouseModel.cs" />
@@ -114,6 +116,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PageChangerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PageChangerControl.Designer.cs">
+      <DependentUpon>PageChangerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProductControl.Designer.cs">
+      <DependentUpon>ProductControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShopControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>
