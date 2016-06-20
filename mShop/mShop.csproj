@@ -57,8 +57,8 @@
   <ItemGroup>
     <Compile Include="Constants\ConstantTexts.cs" />
     <Compile Include="Constants\ConstantValues.cs" />
-    <Compile Include="Models\Model.cs" />
-    <Compile Include="Models\ShopModel.cs" />
+	<Compile Include="Models\Model.cs" />
+	<Compile Include="Models\ShopModel.cs" />
     <Compile Include="Models\WarehouseModel.cs" />
     <Compile Include="MShopEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
