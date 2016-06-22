@@ -19,8 +19,20 @@ namespace mShop.Presenters
             _view = view;
             _model = model;
             _model.OpenConnection(ConnectionType.Shop);
-            UpdateProductsList();
+            //UpdateProductsList();
             _view.ForceUpdateProductsList += UpdateProductsList;
+            _view.SearchProduct += View_SearchProduct;
+        }
+
+        private void View_SearchProduct(object sender, SearchProductArgs e)
+        {
+            if(!string.IsNullOrEmpty(e.Category))
+            {
+                // to implement
+            }
+
+            var data = _model.ShopModel.GetProductsByName(e.Name);
+            _view.UpdateProductsList(data);
         }
 
         public void UpdateView(List<string> data)

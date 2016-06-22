@@ -12,13 +12,8 @@ namespace mShop.Views
 {
     public partial class ShopControlView : UserControl, IView
     {
-        private Dictionary<string, string> _productList = new Dictionary<string, string>() {
-            { "Proszek do prania","Ariel" },
-            { "Mydło w płynie","Biały skunks"},
-            { "Mydełko","Fa"},
-            { "Tarka do kartofli","Fackelman"},
-            { "Komputer Krzyśka", "Apple Inc."}
-        };
+        public event Action ForceUpdateProductsList;
+        public event EventHandler<SearchProductArgs> SearchProduct;
 
         private int currentPage = 0;
 
@@ -56,7 +51,7 @@ namespace mShop.Views
                 gbProductsList.Controls.Remove(gbProductsList.Controls[i]);
             }
 
-            foreach (var x in list.ToList().GetRange(currentPage * 8, 8))
+            foreach (var x in list.ToList())//.GetRange(currentPage * 8, 8))
             {
                 var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
@@ -65,11 +60,12 @@ namespace mShop.Views
             }
         }
 
-        public event Action ForceUpdateProductsList;
 
-        private void pageChangerControl_Load(object sender, EventArgs e)
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            SearchProductArgs args = new SearchProductArgs(tbSearchProductName.Text, cbSearchCategory.Text);
+            SearchProduct?.Invoke(this, args);           
         }
     }
 }

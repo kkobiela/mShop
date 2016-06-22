@@ -116,22 +116,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\PageChangerControl.cs">
+    <Compile Include="Views\ShopControlView\PageChangerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\PageChangerControl.Designer.cs">
+    <Compile Include="Views\ShopControlView\PageChangerControl.Designer.cs">
       <DependentUpon>PageChangerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductControl.cs">
+    <Compile Include="Views\ShopControlView\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\ProductControl.Designer.cs">
+    <Compile Include="Views\ShopControlView\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShopControlView.cs">
+    <Compile Include="Views\ShopControlView\SearchProductArgs.cs" />
+    <Compile Include="Views\ShopControlView\ShopControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\ShopControlView.Designer.cs">
+    <Compile Include="Views\ShopControlView\ShopControlView.Designer.cs">
       <DependentUpon>ShopControlView.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouses.cs">
@@ -152,10 +153,10 @@
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PageChangerControl.resx">
+    <EmbeddedResource Include="Views\ShopControlView\PageChangerControl.resx">
       <DependentUpon>PageChangerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ShopControlView.resx">
+    <EmbeddedResource Include="Views\ShopControlView\ShopControlView.resx">
       <DependentUpon>ShopControlView.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="MShopEntityModel.edmx">

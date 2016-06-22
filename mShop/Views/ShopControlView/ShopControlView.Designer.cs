@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.cbSearchOptions = new System.Windows.Forms.ComboBox();
+            this.tbSearchProductName = new System.Windows.Forms.TextBox();
+            this.cbSearchCategory = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.gbProductsList = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
-            // tbSearch
+            // tbSearchProductName
             // 
-            this.tbSearch.Location = new System.Drawing.Point(3, 3);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(100, 20);
-            this.tbSearch.TabIndex = 0;
+            this.tbSearchProductName.Location = new System.Drawing.Point(3, 3);
+            this.tbSearchProductName.Name = "tbSearchProductName";
+            this.tbSearchProductName.Size = new System.Drawing.Size(100, 20);
+            this.tbSearchProductName.TabIndex = 0;
             // 
-            // cbSearchOptions
+            // cbSearchCategory
             // 
-            this.cbSearchOptions.FormattingEnabled = true;
-            this.cbSearchOptions.Location = new System.Drawing.Point(110, 4);
-            this.cbSearchOptions.Name = "cbSearchOptions";
-            this.cbSearchOptions.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchOptions.TabIndex = 1;
+            this.cbSearchCategory.FormattingEnabled = true;
+            this.cbSearchCategory.Location = new System.Drawing.Point(110, 4);
+            this.cbSearchCategory.Name = "cbSearchCategory";
+            this.cbSearchCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchCategory.TabIndex = 1;
             // 
             // btnSearch
             // 
@@ -58,6 +58,7 @@
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pageChangerControl
             // 
@@ -81,8 +82,8 @@
             this.Controls.Add(this.gbProductsList);
             this.Controls.Add(this.pageChangerControl);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.cbSearchOptions);
-            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.cbSearchCategory);
+            this.Controls.Add(this.tbSearchProductName);
             this.Name = "ShopControlView";
             this.Size = new System.Drawing.Size(602, 405);
             this.ResumeLayout(false);
@@ -92,8 +93,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.ComboBox cbSearchOptions;
+        private System.Windows.Forms.TextBox tbSearchProductName;
+        private System.Windows.Forms.ComboBox cbSearchCategory;
         private System.Windows.Forms.Button btnSearch;
         private PageChangerControl pageChangerControl;
         private System.Windows.Forms.GroupBox gbProductsList;
