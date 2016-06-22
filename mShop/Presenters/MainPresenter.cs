@@ -31,6 +31,7 @@ namespace mShop.Presenters
             };
         }
 
+
         public void InitializePresenter(IView view)
         {
             switch (view.Type)

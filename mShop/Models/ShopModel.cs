@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
+using System.Data.EntityClient;
 namespace mShop.Models
 {
     public class ShopModel
@@ -35,7 +36,7 @@ namespace mShop.Models
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Barcode == productBarcode).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Barcode.Contains(productBarcode)).ToList();
                 return products;
             }
             catch
@@ -48,7 +49,7 @@ namespace mShop.Models
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Brand == productBrand).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Brand.Contains(productBrand)).ToList();
                 return products;
             }
             catch
@@ -61,7 +62,7 @@ namespace mShop.Models
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category == productCategory).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category.Contains(productCategory)).ToList();
                 return products;
             }
             catch
@@ -74,7 +75,8 @@ namespace mShop.Models
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Name == productName).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Name.Contains(productName)).ToList();
+               
                 return products;
             }
             catch
