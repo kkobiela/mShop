@@ -38,6 +38,8 @@ namespace mShop.Presenters
 
         private void View_Logout()
         {
+            _model.Login = "";
+            _model.Password = "";
             ViewChanged?.Invoke(this, new ViewChangedArgs(ViewType.Login));
         }
 
@@ -55,7 +57,6 @@ namespace mShop.Presenters
         {
             throw new NotImplementedException();
         }
-
 
     }
 }

@@ -34,8 +34,7 @@ namespace mShop.Models
         {
             try
             {
-                db = new mshopEntities("root", ""); // Próbnie na root loguje!!!!!
-                //db = new mshopEntities(Login, Password);
+                db = new mshopEntities(Login, Password);
                 db.Database.Connection.Open();
 
                 if (connectionType == ConnectionType.Shop)
@@ -49,8 +48,9 @@ namespace mShop.Models
 
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.ToString());
                 return false;
             }
 
@@ -112,7 +112,7 @@ namespace mShop.Models
 
         public string GetWorkingPlaceOfUser(string login)
         {
-            using (var db = new mshopEntities())
+            using (var db = new mshopEntities(loginuser, loginpassword))
             {
                 try
                 {

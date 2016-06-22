@@ -17,6 +17,6 @@ namespace mShop.Views
     {
         ViewType Type { get; set; }
         void UpdateData();
-        void SetError();
+        void SetError(string info);
     }
 }

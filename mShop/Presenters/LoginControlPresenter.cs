@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mShop.Constants;
 
 namespace mShop.Presenters
 {
@@ -65,6 +66,10 @@ namespace mShop.Presenters
                     _model.Password = e.Password;
                     ViewChangedArgs args = new ViewChangedArgs(ViewType.Shop);
                     ViewChanged?.Invoke(this, args);
+                }
+                else
+                {
+                    _view.SetError(ConstantTexts.WrongUsernameOrPassword);
                 }
             }
         }

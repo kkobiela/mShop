@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mShop.Presenters;
+using mShop.Constants;
 
 namespace mShop.Views
 {
@@ -25,9 +26,9 @@ namespace mShop.Views
 
         public event EventHandler<LoginEventArgs> Login;
 
-        public void SetError()
+        public void SetError(string info)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(info, ConstantTexts.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public void UpdateData()

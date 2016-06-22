@@ -33,7 +33,7 @@ namespace mShop.Views
 
         public ViewType Type { get; set; }
 
-        public void SetError()
+        public void SetError(string info)
         {
             throw new NotImplementedException();
         }
@@ -55,7 +55,7 @@ namespace mShop.Views
             {
                 var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
-                this.gbProductsList.Controls.Add(control);
+                gbProductsList.Controls.Add(control);
                 y += 37;
             }
 

@@ -12,14 +12,11 @@ namespace mShop
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.SqlClient;
+    using MySql.Data.MySqlClient;
+    using System.Data.EntityClient;
     public partial class mshopEntities : DbContext
     {
-        public mshopEntities()
-            : base(GetConnectionString())
-        {
-        }
-
         public mshopEntities(string username, string password)
            : base(GetConnectionString(username, password))
         { }
@@ -30,14 +27,27 @@ namespace mShop
             objectContext.CommandTimeout = Timeout;
         }
 
-        public static string GetConnectionString()
-        {
-            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id=root;database=MShop'";
-        }
-
         public static string GetConnectionString(string username, string password)
         {
-            return @"metadata = res://*/MShopEntityModel.csdl|res://*/MShopEntityModel.ssdl|res://*/MShopEntityModel.msl;provider=MySql.Data.MySqlClient;provider connection string=';server=localhost;user id=" + username + ";password=" + password + ";database=MShop'";
+            string providerName = "MySql.Data.MySqlClient";
+            string serverName = "localhost";
+            string databaseName = "mshop";
+            MySqlConnectionStringBuilder mysqlBuilder = new MySqlConnectionStringBuilder();
+            mysqlBuilder.Server = serverName;
+            mysqlBuilder.Database = databaseName;
+            mysqlBuilder.UserID = username;
+            mysqlBuilder.Password = password;
+
+            string providerString = mysqlBuilder.ToString();
+
+            EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
+            entityBuilder.Provider = providerName;
+            entityBuilder.ProviderConnectionString = providerString;
+            entityBuilder.Metadata = @"res://*/MShopEntityModel.csdl|
+                                       res://*/MShopEntityModel.ssdl|
+                                       res://*/MShopEntityModel.msl";
+
+            return entityBuilder.ToString();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
