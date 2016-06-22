@@ -22,6 +22,7 @@ namespace mShop.Presenters
             //UpdateProductsList();
             _view.ForceUpdateProductsList += UpdateProductsList;
             _view.SearchProduct += View_SearchProduct;
+            _view.Logout += View_Logout;
         }
 
         private void View_SearchProduct(object sender, SearchProductArgs e)
@@ -33,6 +34,11 @@ namespace mShop.Presenters
 
             var data = _model.ShopModel.GetProductsByName(e.Name);
             _view.UpdateProductsList(data);
+        }
+
+        private void View_Logout()
+        {
+            ViewChanged?.Invoke(this, new ViewChangedArgs(ViewType.Login));
         }
 
         public void UpdateView(List<string> data)

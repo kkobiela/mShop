@@ -14,6 +14,7 @@ namespace mShop.Views
     {
         public event Action ForceUpdateProductsList;
         public event EventHandler<SearchProductArgs> SearchProduct;
+        public event Action Logout;
 
         private int currentPage = 0;
 
@@ -50,14 +51,14 @@ namespace mShop.Views
             {
                 gbProductsList.Controls.Remove(gbProductsList.Controls[i]);
             }
-
-            foreach (var x in list.ToList())//.GetRange(currentPage * 8, 8))
+            foreach (var x in list.ToList().GetRange(currentPage * 8, 8))
             {
                 var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
                 this.gbProductsList.Controls.Add(control);
                 y += 37;
             }
+
         }
 
 
@@ -66,6 +67,11 @@ namespace mShop.Views
         {
             SearchProductArgs args = new SearchProductArgs(tbSearchProductName.Text, cbSearchCategory.Text);
             SearchProduct?.Invoke(this, args);           
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Logout?.Invoke();
         }
     }
 }

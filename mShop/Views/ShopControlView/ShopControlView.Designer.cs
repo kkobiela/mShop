@@ -31,8 +31,9 @@
             this.tbSearchProductName = new System.Windows.Forms.TextBox();
             this.cbSearchCategory = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.gbProductsList = new System.Windows.Forms.GroupBox();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
             // tbSearchProductName
@@ -60,13 +61,6 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // pageChangerControl
-            // 
-            this.pageChangerControl.Location = new System.Drawing.Point(3, 373);
-            this.pageChangerControl.Name = "pageChangerControl";
-            this.pageChangerControl.Size = new System.Drawing.Size(580, 29);
-            this.pageChangerControl.TabIndex = 3;
-            // 
             // gbProductsList
             // 
             this.gbProductsList.Location = new System.Drawing.Point(3, 31);
@@ -75,17 +69,35 @@
             this.gbProductsList.TabIndex = 4;
             this.gbProductsList.TabStop = false;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(6, 408);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(76, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // pageChangerControl
+            // 
+            this.pageChangerControl.Location = new System.Drawing.Point(3, 373);
+            this.pageChangerControl.Name = "pageChangerControl";
+            this.pageChangerControl.Size = new System.Drawing.Size(580, 29);
+            this.pageChangerControl.TabIndex = 3;
+            // 
             // ShopControlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.gbProductsList);
             this.Controls.Add(this.pageChangerControl);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbSearchCategory);
             this.Controls.Add(this.tbSearchProductName);
             this.Name = "ShopControlView";
-            this.Size = new System.Drawing.Size(602, 405);
+            this.Size = new System.Drawing.Size(602, 438);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +110,6 @@
         private System.Windows.Forms.Button btnSearch;
         private PageChangerControl pageChangerControl;
         private System.Windows.Forms.GroupBox gbProductsList;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
