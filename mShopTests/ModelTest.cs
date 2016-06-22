@@ -27,5 +27,6 @@ namespace mShopTests
             Assert.AreEqual(expectedOnFail, onFail);
 
         }
+
     }
 }
