@@ -45,23 +45,38 @@ namespace mShop.Views
 
         public void UpdateProductsList(List<products_in_shop> list)
         {
+            DeleteAllProductControls();
+            AddProductControls(list);
+        }
 
-            int y = 0;
-            for(int i = 0; i<gbProductsList.Controls.Count; i++)
+        private void DeleteAllProductControls()
+        {
+            int numberOfProducts = gbProductsList.Controls.Count;
+            for (int i = 0; i < numberOfProducts; i++)
             {
-                gbProductsList.Controls.Remove(gbProductsList.Controls[i]);
+                gbProductsList.Controls.Remove(gbProductsList.Controls[0]);
             }
-            foreach (var x in list.ToList().GetRange(currentPage * 8, 8))
+        }
+
+        private void AddProductControls(List<products_in_shop> list)
+        {
+            int y = 0;
+            int controlsToAdd = Constants.ConstantValues.NumberOfControlsOnPage;
+
+            if ((currentPage+1) * controlsToAdd > list.Count)
+            {
+                int controlsOnLastPage = list.Count % Constants.ConstantValues.NumberOfControlsOnPage;
+                controlsToAdd = controlsOnLastPage;
+            }
+
+            foreach (var x in list.ToList().GetRange(currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
             {
                 var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
                 gbProductsList.Controls.Add(control);
-                y += 37;
+                y += Constants.ConstantValues.ProductControlMargin;
             }
-
         }
-
-
 
         private void btnSearch_Click(object sender, EventArgs e)
         {

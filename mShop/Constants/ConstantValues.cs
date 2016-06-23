@@ -8,5 +8,7 @@ namespace mShop.Constants
 {
     public static class ConstantValues
     {
+        public static int ProductControlMargin { get; } = 37;
+        public static int NumberOfControlsOnPage { get; } = 8;
     }
 }

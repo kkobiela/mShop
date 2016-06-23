@@ -29,8 +29,11 @@ namespace mShop.Views
 
         private void btnPreviousPage_Click(object sender, EventArgs e)
         {
-            _currentPage -= 1;
-            PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+            if (_currentPage > 0)
+            {
+                _currentPage -= 1;
+                PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+            }
         }
     }
 
