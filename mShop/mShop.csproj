@@ -95,6 +95,7 @@
     <Compile Include="Products_Warehouses.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ShoppingCart.cs" />
     <Compile Include="Shops.cs">
       <DependentUpon>MShopEntityModel.tt</DependentUpon>
     </Compile>
