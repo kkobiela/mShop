@@ -56,6 +56,14 @@ namespace mShop.Models
 
         }
 
+        public void CloseConnection()
+        {
+            if(db != null)
+            {
+                db = null;
+            }
+        }
+
         public bool UserExists(string username, string password)
         {
             using (var db = new mshopEntities(username, password))

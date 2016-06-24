@@ -40,6 +40,7 @@ namespace mShop.Presenters
         {
             _model.Login = "";
             _model.Password = "";
+            _model.CloseConnection();
             ViewChanged?.Invoke(this, new ViewChangedArgs(ViewType.Login));
         }
 
