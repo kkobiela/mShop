@@ -30,6 +30,7 @@ namespace mShop.Views
             InitializeComponent();
             Type = ViewType.Shop;
             pageChangerControl.PageChanged += ChangeCurrentPage;
+            CreateSearchOptions();
         }
 
         public ViewType Type { get; set; }
@@ -52,7 +53,18 @@ namespace mShop.Views
 
         public void UpdateCart(List<products_in_shop> list)
         {
-
+            int y = 0;
+            foreach (var x in list)
+            {
+                TextBox product = new TextBox();
+                product.Enabled = false;
+                product.BorderStyle = BorderStyle.None;
+                product.Text = x.Name + " - " + x.Brand;
+                product.Size = new Size(300, 20);
+                product.Location = new System.Drawing.Point(0, y);
+                panelCart.Controls.Add(product);
+                y += Constants.ConstantValues.ProductInCartMargin;
+            }
         }
 
         private void DeleteAllProductControls()
@@ -99,6 +111,20 @@ namespace mShop.Views
             pageChangerControl.Controls[0].Text = _maxNumberOfPages.ToString();
         }
 
+        private void CreateSearchOptions()
+        {
+            cbSearchCategory.Items.Add(Constants.ConstantTexts.Name);
+            cbSearchCategory.Items.Add(Constants.ConstantTexts.Brand);
+            cbSearchCategory.Items.Add(Constants.ConstantTexts.Category);
+            cbSearchCategory.SelectedIndex = 0;
+
+            cbCategory.Items.Add(Constants.ConstantTexts.VegetablesAndFruits);
+            cbCategory.Items.Add(Constants.ConstantTexts.Drinks);
+            cbCategory.Items.Add(Constants.ConstantTexts.Chemistry);
+            cbCategory.Items.Add(Constants.ConstantTexts.Others);
+            cbCategory.SelectedIndex = 0;
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchProductArgs args = new SearchProductArgs(tbSearchProductName.Text, cbSearchCategory.Text);
@@ -108,6 +134,30 @@ namespace mShop.Views
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Logout?.Invoke();
+        }
+
+        private void cbSearchCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbCategory.Visible = false;
+            tbSearchProductName.Enabled = true;
+            switch (cbSearchCategory.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    cbCategory.Visible = true;
+                    tbSearchProductName.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

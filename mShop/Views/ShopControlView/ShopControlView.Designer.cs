@@ -33,6 +33,9 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.gbProductsList = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.panelCart = new System.Windows.Forms.Panel();
+            this.btnSell = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
@@ -45,11 +48,13 @@
             // 
             // cbSearchCategory
             // 
+            this.cbSearchCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchCategory.FormattingEnabled = true;
-            this.cbSearchCategory.Location = new System.Drawing.Point(110, 4);
+            this.cbSearchCategory.Location = new System.Drawing.Point(109, 3);
             this.cbSearchCategory.Name = "cbSearchCategory";
             this.cbSearchCategory.Size = new System.Drawing.Size(121, 21);
             this.cbSearchCategory.TabIndex = 1;
+            this.cbSearchCategory.SelectedIndexChanged += new System.EventHandler(this.cbSearchCategory_SelectedIndexChanged);
             // 
             // btnSearch
             // 
@@ -63,15 +68,15 @@
             // 
             // gbProductsList
             // 
-            this.gbProductsList.Location = new System.Drawing.Point(3, 31);
+            this.gbProductsList.Location = new System.Drawing.Point(3, 29);
             this.gbProductsList.Name = "gbProductsList";
-            this.gbProductsList.Size = new System.Drawing.Size(596, 336);
+            this.gbProductsList.Size = new System.Drawing.Size(596, 373);
             this.gbProductsList.TabIndex = 4;
             this.gbProductsList.TabStop = false;
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(6, 408);
+            this.btnLogout.Location = new System.Drawing.Point(781, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(76, 23);
             this.btnLogout.TabIndex = 5;
@@ -79,9 +84,38 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // panelCart
+            // 
+            this.panelCart.AutoScroll = true;
+            this.panelCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCart.Location = new System.Drawing.Point(605, 29);
+            this.panelCart.Name = "panelCart";
+            this.panelCart.Size = new System.Drawing.Size(251, 373);
+            this.panelCart.TabIndex = 0;
+            // 
+            // btnSell
+            // 
+            this.btnSell.Location = new System.Drawing.Point(781, 408);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(75, 23);
+            this.btnSell.TabIndex = 6;
+            this.btnSell.Text = "Sell";
+            this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(236, 3);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbCategory.TabIndex = 7;
+            this.cbCategory.Visible = false;
+            // 
             // pageChangerControl
             // 
-            this.pageChangerControl.Location = new System.Drawing.Point(3, 373);
+            this.pageChangerControl.Location = new System.Drawing.Point(3, 406);
             this.pageChangerControl.MaxNumberOfPages = 1;
             this.pageChangerControl.Name = "pageChangerControl";
             this.pageChangerControl.Size = new System.Drawing.Size(596, 29);
@@ -91,6 +125,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbCategory);
+            this.Controls.Add(this.btnSell);
+            this.Controls.Add(this.panelCart);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.gbProductsList);
             this.Controls.Add(this.pageChangerControl);
@@ -98,7 +135,7 @@
             this.Controls.Add(this.cbSearchCategory);
             this.Controls.Add(this.tbSearchProductName);
             this.Name = "ShopControlView";
-            this.Size = new System.Drawing.Size(602, 438);
+            this.Size = new System.Drawing.Size(860, 438);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,5 +149,8 @@
         private PageChangerControl pageChangerControl;
         private System.Windows.Forms.GroupBox gbProductsList;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Panel panelCart;
+        private System.Windows.Forms.Button btnSell;
+        private System.Windows.Forms.ComboBox cbCategory;
     }
 }
