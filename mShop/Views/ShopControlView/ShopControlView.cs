@@ -16,11 +16,12 @@ namespace mShop.Views
         public event EventHandler<SearchProductArgs> SearchProduct;
         public event Action Logout;
 
-        private int currentPage = 0;
+        private int _currentPage = 0;
+        private int _maxNumberOfPages = 0;
 
         public void ChangeCurrentPage(object sender, PageChangedArgs e)
         {
-            currentPage = sender != null ? e.CurrentPage : 0;
+            _currentPage = sender != null ? e.CurrentPage : 0;
             ForceUpdateProductsList?.Invoke();
         }
 
@@ -60,22 +61,30 @@ namespace mShop.Views
 
         private void AddProductControls(List<products_in_shop> list)
         {
-            int y = 0;
+            _maxNumberOfPages = CheckMaxNumberOfPages(list.Count);
             int controlsToAdd = Constants.ConstantValues.NumberOfControlsOnPage;
 
-            if ((currentPage+1) * controlsToAdd > list.Count)
+            if ((_currentPage+1) * controlsToAdd > list.Count)
             {
                 int controlsOnLastPage = list.Count % Constants.ConstantValues.NumberOfControlsOnPage;
                 controlsToAdd = controlsOnLastPage;
+                _currentPage = _maxNumberOfPages -1;
             }
 
-            foreach (var x in list.ToList().GetRange(currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
+            int y = 0;
+            foreach (var x in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
             {
                 var control = new ProductControl(x.Name, x.Brand);
                 control.Location = new System.Drawing.Point(0, y);
                 gbProductsList.Controls.Add(control);
                 y += Constants.ConstantValues.ProductControlMargin;
             }
+        }
+
+        private int CheckMaxNumberOfPages(int numberOfProducts)
+        {
+            int numberOfPages = (int)Math.Ceiling((double)numberOfProducts / (double)Constants.ConstantValues.NumberOfControlsOnPage);
+            return numberOfPages;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

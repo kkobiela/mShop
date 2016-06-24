@@ -24,6 +24,7 @@ namespace mShop.Views
         private void btnNextPage_Click(object sender, EventArgs e)
         {
             _currentPage += 1;
+            ChangePageLabel(_currentPage);
             PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
         }
 
@@ -32,8 +33,14 @@ namespace mShop.Views
             if (_currentPage > 0)
             {
                 _currentPage -= 1;
+                ChangePageLabel(_currentPage);
                 PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
             }
+        }
+
+        private void ChangePageLabel(int pageNumber)
+        {
+            lbCurrentPage.Text = (pageNumber + 1).ToString();
         }
     }
 
@@ -43,6 +50,7 @@ namespace mShop.Views
         public PageChangedArgs(int currentPage)
         {
             CurrentPage = currentPage;
+            
         }
     }
 }
