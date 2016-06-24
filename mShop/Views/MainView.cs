@@ -29,6 +29,7 @@ namespace mShop
             viewControl.Name = "viewControl";
             viewControl.Location = new System.Drawing.Point(0, 0);
             //viewControl.Size = new System.Drawing.Size(150, 150);
+            this.Size = new Size(350,238);
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);
@@ -42,6 +43,7 @@ namespace mShop
             viewControl.Name = "viewControl";
             viewControl.Location = new System.Drawing.Point(0, 0);
             //viewControl.Size = new System.Drawing.Size(150, 150);
+            this.Size = new Size(877, 490);
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);

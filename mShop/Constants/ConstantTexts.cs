@@ -8,6 +8,9 @@ namespace mShop.Constants
 {
     public static class ConstantTexts
     {
+        public static string ShopName { get; } = "mShop";
+        public static string Login { get; } = "Login:";
+        public static string Password { get; } = "Password:";
         public static string BtnSearch { get; } = "Search";
         public static string LbQuantity { get; } = "Quantity:";
         public static string WrongUsernameOrPassword { get; } = "Wrong username or password";
