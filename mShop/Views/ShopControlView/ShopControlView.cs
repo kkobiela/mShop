@@ -50,6 +50,11 @@ namespace mShop.Views
             AddProductControls(list);
         }
 
+        public void UpdateCart(List<products_in_shop> list)
+        {
+
+        }
+
         private void DeleteAllProductControls()
         {
             int numberOfProducts = gbProductsList.Controls.Count;

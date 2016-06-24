@@ -8,14 +8,14 @@ namespace mShop
 {
     public class ShoppingCart
     {
-        public List<products_in_shop> SCart { get; private set;} = new List<products_in_shop>();
+        private List<products_in_shop> cart = new List<products_in_shop>();
 
-        public bool AddNewProduct(products_in_shop product)
+        public bool AddProduct(products_in_shop product)
         {
-            int exist = SCart.Where(item => item.Id == product.Id).ToList().Count;
+            int exist = cart.Where(item => item.Id == product.Id).ToList().Count;
             if (exist == 0)
             {
-                SCart.Add(product);
+                cart.Add(product);
                 return true;
             }
             else
@@ -26,11 +26,11 @@ namespace mShop
 
         public bool RemoveProduct(int productID)
         {
-            foreach(var product in SCart)
+            foreach(var product in cart)
             {
                 if(product.Id == productID)
                 {
-                    SCart.Remove(product);
+                    cart.Remove(product);
                     return true;
                 }
             }
@@ -38,9 +38,9 @@ namespace mShop
 
         }
 
-        public bool UpdateProdactQuantity(int productID, int quantity)
+        public bool UpdateProductQuantity(int productID, int quantity)
         {
-            foreach(var product in SCart)
+            foreach(var product in cart)
             {
                 if(product.Id == productID)
                 {
@@ -56,6 +56,11 @@ namespace mShop
                 }
             }
             return false;
+        }
+
+        public List<products_in_shop> GetProducts()
+        {
+            return cart;
         }
     }
 }

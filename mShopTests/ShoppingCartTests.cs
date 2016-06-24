@@ -24,8 +24,8 @@ namespace mShopTests
             bool expectedBadValue = false;
 
             //act
-            bool good = shoppingCart.AddNewProduct(product);
-            bool bad = shoppingCart.AddNewProduct(product);
+            bool good = shoppingCart.AddProduct(product);
+            bool bad = shoppingCart.AddProduct(product);
 
             //assert
             Assert.AreEqual(expectedGoodValue, good);
@@ -47,7 +47,7 @@ namespace mShopTests
             bool expectedGoodValue = true;
             bool expectedBadValue = false;
 
-            shoppingCart.AddNewProduct(goodProduct);
+            shoppingCart.AddProduct(goodProduct);
 
             //act
 
@@ -76,13 +76,13 @@ namespace mShopTests
             bool expectedGoodValue = true;
             bool expectedBadValue = false;
 
-            shoppingCart.AddNewProduct(goodProduct);
+            shoppingCart.AddProduct(goodProduct);
 
             //act
 
-            bool good = shoppingCart.UpdateProdactQuantity(goodProduct.Id, 15);
-            bool bad1 = shoppingCart.UpdateProdactQuantity(goodProduct.Id, -10);
-            bool bad2 = shoppingCart.UpdateProdactQuantity(badProduct.Id, 10);
+            bool good = shoppingCart.UpdateProductQuantity(goodProduct.Id, 15);
+            bool bad1 = shoppingCart.UpdateProductQuantity(goodProduct.Id, -10);
+            bool bad2 = shoppingCart.UpdateProductQuantity(badProduct.Id, 10);
 
             //assert
             Assert.AreEqual(expectedGoodValue, good);
