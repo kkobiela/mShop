@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbCurrentPage = new System.Windows.Forms.Label();
+            this.labelPages = new System.Windows.Forms.Label();
             this.btnNextPage = new System.Windows.Forms.Button();
             this.btnPreviousPage = new System.Windows.Forms.Button();
-            this.lbNumberOfPages = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lbCurrentPage
+            // labelPages
             // 
-            this.lbCurrentPage.AutoSize = true;
-            this.lbCurrentPage.Location = new System.Drawing.Point(84, 8);
-            this.lbCurrentPage.Name = "lbCurrentPage";
-            this.lbCurrentPage.Size = new System.Drawing.Size(13, 13);
-            this.lbCurrentPage.TabIndex = 8;
-            this.lbCurrentPage.Text = "1";
+            this.labelPages.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelPages.AutoSize = true;
+            this.labelPages.Location = new System.Drawing.Point(97, 5);
+            this.labelPages.Name = "labelPages";
+            this.labelPages.Size = new System.Drawing.Size(24, 13);
+            this.labelPages.TabIndex = 8;
+            this.labelPages.Text = "1/1";
             // 
             // btnNextPage
             // 
-            this.btnNextPage.Location = new System.Drawing.Point(502, 3);
+            this.btnNextPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnNextPage.Location = new System.Drawing.Point(141, 0);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(75, 23);
             this.btnNextPage.TabIndex = 7;
@@ -55,7 +56,8 @@
             // 
             // btnPreviousPage
             // 
-            this.btnPreviousPage.Location = new System.Drawing.Point(3, 3);
+            this.btnPreviousPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPreviousPage.Location = new System.Drawing.Point(0, 0);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(75, 23);
             this.btnPreviousPage.TabIndex = 6;
@@ -63,25 +65,15 @@
             this.btnPreviousPage.UseVisualStyleBackColor = true;
             this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
             // 
-            // lbNumberOfPages
-            // 
-            this.lbNumberOfPages.AutoSize = true;
-            this.lbNumberOfPages.Location = new System.Drawing.Point(483, 8);
-            this.lbNumberOfPages.Name = "lbNumberOfPages";
-            this.lbNumberOfPages.Size = new System.Drawing.Size(13, 13);
-            this.lbNumberOfPages.TabIndex = 9;
-            this.lbNumberOfPages.Text = "1";
-            // 
             // PageChangerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lbNumberOfPages);
-            this.Controls.Add(this.lbCurrentPage);
+            this.Controls.Add(this.labelPages);
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPreviousPage);
             this.Name = "PageChangerControl";
-            this.Size = new System.Drawing.Size(580, 29);
+            this.Size = new System.Drawing.Size(216, 23);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,9 +81,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbCurrentPage;
+        private System.Windows.Forms.Label labelPages;
         private System.Windows.Forms.Button btnNextPage;
         private System.Windows.Forms.Button btnPreviousPage;
-        private System.Windows.Forms.Label lbNumberOfPages;
     }
 }

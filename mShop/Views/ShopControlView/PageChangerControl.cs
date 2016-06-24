@@ -13,7 +13,14 @@ namespace mShop.Views
     public partial class PageChangerControl : UserControl
     {
         private int _currentPage = 0;
-        public int MaxNumberOfPages { get; set; } = 1;
+        private int _maxNumberOfPages = 1;
+        public int MaxNumberOfPages {
+            get { return _maxNumberOfPages; }
+            set {
+                _maxNumberOfPages = value;
+                ChangeMaxPageLabel(value);
+            }
+        }
 
         public PageChangerControl()
         {
@@ -44,7 +51,16 @@ namespace mShop.Views
 
         private void ChangeCurrentPageLabel(int pageNumber)
         {
-            lbCurrentPage.Text = (pageNumber + 1).ToString();
+            var pages = labelPages.Text.Split('/');
+            pages[0] = (pageNumber+1).ToString();
+            labelPages.Text = pages[0] + '/' + pages[1];
+        }
+
+        public void ChangeMaxPageLabel(int pageNumber)
+        {
+            var pages = labelPages.Text.Split('/');
+            pages[1] = (pageNumber).ToString();
+            labelPages.Text = pages[0] + '/' + pages[1];
         }
     }
 

@@ -108,7 +108,6 @@ namespace mShop.Views
         private void SetMaxNumberOfPages()
         {
             pageChangerControl.MaxNumberOfPages = _maxNumberOfPages;
-            pageChangerControl.Controls[0].Text = _maxNumberOfPages.ToString();
         }
 
         private void CreateSearchOptions()
