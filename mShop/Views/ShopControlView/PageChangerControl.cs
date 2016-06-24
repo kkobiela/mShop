@@ -13,6 +13,7 @@ namespace mShop.Views
     public partial class PageChangerControl : UserControl
     {
         private int _currentPage = 0;
+        public int MaxNumberOfPages { get; set; } = 1;
 
         public PageChangerControl()
         {
@@ -23,9 +24,12 @@ namespace mShop.Views
 
         private void btnNextPage_Click(object sender, EventArgs e)
         {
-            _currentPage += 1;
-            ChangePageLabel(_currentPage);
-            PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+            if (_currentPage < MaxNumberOfPages - 1)
+            {
+                _currentPage += 1;
+                ChangeCurrentPageLabel(_currentPage);
+                PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
+            }
         }
 
         private void btnPreviousPage_Click(object sender, EventArgs e)
@@ -33,12 +37,12 @@ namespace mShop.Views
             if (_currentPage > 0)
             {
                 _currentPage -= 1;
-                ChangePageLabel(_currentPage);
+                ChangeCurrentPageLabel(_currentPage);
                 PageChanged?.Invoke(this, new PageChangedArgs(_currentPage));
             }
         }
 
-        private void ChangePageLabel(int pageNumber)
+        private void ChangeCurrentPageLabel(int pageNumber)
         {
             lbCurrentPage.Text = (pageNumber + 1).ToString();
         }

@@ -61,7 +61,8 @@ namespace mShop.Views
 
         private void AddProductControls(List<products_in_shop> list)
         {
-            _maxNumberOfPages = CheckMaxNumberOfPages(list.Count);
+            _maxNumberOfPages = MaxNumberOfPages(list.Count);
+            SetMaxNumberOfPages();
             int controlsToAdd = Constants.ConstantValues.NumberOfControlsOnPage;
 
             if ((_currentPage+1) * controlsToAdd > list.Count)
@@ -81,16 +82,22 @@ namespace mShop.Views
             }
         }
 
-        private int CheckMaxNumberOfPages(int numberOfProducts)
+        private int MaxNumberOfPages(int numberOfProducts)
         {
             int numberOfPages = (int)Math.Ceiling((double)numberOfProducts / (double)Constants.ConstantValues.NumberOfControlsOnPage);
             return numberOfPages;
         }
 
+        private void SetMaxNumberOfPages()
+        {
+            pageChangerControl.MaxNumberOfPages = _maxNumberOfPages;
+            pageChangerControl.Controls[0].Text = _maxNumberOfPages.ToString();
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchProductArgs args = new SearchProductArgs(tbSearchProductName.Text, cbSearchCategory.Text);
-            SearchProduct?.Invoke(this, args);           
+            SearchProduct?.Invoke(this, args);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

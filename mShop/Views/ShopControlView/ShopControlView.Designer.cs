@@ -82,8 +82,9 @@
             // pageChangerControl
             // 
             this.pageChangerControl.Location = new System.Drawing.Point(3, 373);
+            this.pageChangerControl.MaxNumberOfPages = 1;
             this.pageChangerControl.Name = "pageChangerControl";
-            this.pageChangerControl.Size = new System.Drawing.Size(580, 29);
+            this.pageChangerControl.Size = new System.Drawing.Size(596, 29);
             this.pageChangerControl.TabIndex = 3;
             // 
             // ShopControlView
