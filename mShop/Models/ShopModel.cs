@@ -11,6 +11,7 @@ namespace mShop.Models
     {
         private int? currentShop;
         private mshopEntities db;
+        public List<products_in_shop> TemporaryProductsData { get; set; } = null;
 
 
         public ShopModel(mshopEntities database, int? cS)

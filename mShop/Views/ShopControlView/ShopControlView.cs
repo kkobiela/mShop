@@ -13,7 +13,7 @@ namespace mShop.Views
     public partial class ShopControlView : UserControl, IView
     {
         public event Action ForceUpdateProductsList;
-        public event EventHandler<SearchProductArgs> SearchProduct;
+        public event EventHandler<SearchItemArgs> SearchProduct;
         public event Action Logout;
 
         private int _currentPage = 0;
@@ -38,6 +38,11 @@ namespace mShop.Views
         public void SetError(string info)
         {
             throw new NotImplementedException();
+        }
+
+        public void SetSearchError(string info)
+        {
+            MessageBox.Show(info);
         }
 
         public void UpdateData()
@@ -74,6 +79,11 @@ namespace mShop.Views
             {
                 gbProductsList.Controls.Remove(gbProductsList.Controls[0]);
             }
+        }
+
+        internal void UpdateProductsList(object temporaryProductsData)
+        {
+            throw new NotImplementedException();
         }
 
         private void AddProductControls(List<products_in_shop> list)
@@ -119,15 +129,32 @@ namespace mShop.Views
 
             cbCategory.Items.Add(Constants.ConstantTexts.VegetablesAndFruits);
             cbCategory.Items.Add(Constants.ConstantTexts.Drinks);
-            cbCategory.Items.Add(Constants.ConstantTexts.Chemistry);
+            cbCategory.Items.Add(Constants.ConstantTexts.DomesticDetergents);
             cbCategory.Items.Add(Constants.ConstantTexts.Others);
             cbCategory.SelectedIndex = 0;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SearchProductArgs args = new SearchProductArgs(tbSearchProductName.Text, cbSearchCategory.Text);
-            SearchProduct?.Invoke(this, args);
+            SearchItemArgs args = null;
+            switch (cbSearchCategory.SelectedItem.ToString())
+            {
+                case "Name":
+                    args = new SearchItemArgs(tbSearchProducts.Text, SearchItemType.Name);
+                    break;
+                case "Brand":
+                    args = new SearchItemArgs(tbSearchProducts.Text, SearchItemType.Brand);
+                    break;
+                case "Category":
+                    args = new SearchItemArgs(cbCategory.SelectedItem.ToString(), SearchItemType.Category);
+                    break;
+                default:
+                    break;
+            }
+            if(args != null)
+            { 
+                SearchProduct?.Invoke(this, args);
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -138,7 +165,7 @@ namespace mShop.Views
         private void cbSearchCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbCategory.Visible = false;
-            tbSearchProductName.Enabled = true;
+            tbSearchProducts.Enabled = true;
             switch (cbSearchCategory.SelectedIndex)
             {
                 case 0:
@@ -147,7 +174,7 @@ namespace mShop.Views
                     break;
                 case 2:
                     cbCategory.Visible = true;
-                    tbSearchProductName.Enabled = false;
+                    tbSearchProducts.Enabled = false;
                     break;
                 default:
                     break;

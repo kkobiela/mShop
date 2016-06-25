@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbSearchProductName = new System.Windows.Forms.TextBox();
+            this.tbSearchProducts = new System.Windows.Forms.TextBox();
             this.cbSearchCategory = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gbProductsList = new System.Windows.Forms.GroupBox();
@@ -39,12 +39,12 @@
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
-            // tbSearchProductName
+            // tbSearchProducts
             // 
-            this.tbSearchProductName.Location = new System.Drawing.Point(3, 3);
-            this.tbSearchProductName.Name = "tbSearchProductName";
-            this.tbSearchProductName.Size = new System.Drawing.Size(100, 20);
-            this.tbSearchProductName.TabIndex = 0;
+            this.tbSearchProducts.Location = new System.Drawing.Point(3, 3);
+            this.tbSearchProducts.Name = "tbSearchProducts";
+            this.tbSearchProducts.Size = new System.Drawing.Size(100, 20);
+            this.tbSearchProducts.TabIndex = 0;
             // 
             // cbSearchCategory
             // 
@@ -133,7 +133,7 @@
             this.Controls.Add(this.pageChangerControl);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbSearchCategory);
-            this.Controls.Add(this.tbSearchProductName);
+            this.Controls.Add(this.tbSearchProducts);
             this.Name = "ShopControlView";
             this.Size = new System.Drawing.Size(860, 438);
             this.ResumeLayout(false);
@@ -143,7 +143,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbSearchProductName;
+        private System.Windows.Forms.TextBox tbSearchProducts;
         private System.Windows.Forms.ComboBox cbSearchCategory;
         private System.Windows.Forms.Button btnSearch;
         private PageChangerControl pageChangerControl;

@@ -2,14 +2,29 @@
 
 namespace mShop.Views
 {
-    public class SearchProductArgs : EventArgs
+
+    public enum SearchItemType
     {
-        public string Name { get; private set; }
-        public string Category { get; private set; }
-        public SearchProductArgs(string name, string category)
+        Name,
+        Brand,
+        Category
+    }
+    public class SearchItemArgs : EventArgs
+    {
+        public string Value { get; private set; }
+        public SearchItemType Type { get; private set; }
+        //public string Category { get; private set; }
+        public SearchItemArgs(string value, SearchItemType type)
         {
-            Name = name;
+            Value = value;
+            Type = type;
+        }
+
+        /*
+        public SearchItemArgs(string value, SearchItemType type, string category) : this(value, type)
+        {
             Category = category;
         }
+        */
     }
 }

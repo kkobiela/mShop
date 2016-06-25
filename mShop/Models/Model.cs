@@ -20,6 +20,7 @@ namespace mShop.Models
         private string loginuser = "Login_User";
         private string loginpassword = "login";
 
+
         #region Properties
 
         public string Login{ private get; set;}
