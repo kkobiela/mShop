@@ -36,6 +36,7 @@
             this.panelCart = new System.Windows.Forms.Panel();
             this.btnSell = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.tbLogin = new System.Windows.Forms.TextBox();
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
@@ -113,6 +114,17 @@
             this.cbCategory.TabIndex = 7;
             this.cbCategory.Visible = false;
             // 
+            // tbLogin
+            // 
+            this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbLogin.Location = new System.Drawing.Point(605, 10);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.ReadOnly = true;
+            this.tbLogin.Size = new System.Drawing.Size(170, 13);
+            this.tbLogin.TabIndex = 8;
+            this.tbLogin.Text = "tbLogin";
+            this.tbLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // pageChangerControl
             // 
             this.pageChangerControl.Location = new System.Drawing.Point(201, 406);
@@ -125,6 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.btnSell);
             this.Controls.Add(this.panelCart);
@@ -152,5 +165,6 @@
         private System.Windows.Forms.Panel panelCart;
         private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.TextBox tbLogin;
     }
 }

@@ -12,12 +12,20 @@ namespace mShop.Views
 {
     public partial class ProductControl : UserControl
     {
-        public ProductControl(string name, string brand, int quantity)
+        private ShopControlView _parent;
+
+        public ProductControl(string name, string brand, int quantity, ShopControlView parent)
         {
             InitializeComponent();
             this.tbName.Text = name;
             this.tbBrand.Text = brand;
             this.lbAvailableQuantity.Text = quantity.ToString();
+            _parent = parent;
+        }
+
+        private void cbProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            _parent.ProductSelected();
         }
     }
 }

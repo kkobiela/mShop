@@ -63,15 +63,16 @@
             this.cbProduct.Size = new System.Drawing.Size(15, 14);
             this.cbProduct.TabIndex = 3;
             this.cbProduct.UseVisualStyleBackColor = true;
+            this.cbProduct.CheckedChanged += new System.EventHandler(this.cbProduct_CheckedChanged);
             // 
             // tbName
             // 
             this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbName.Enabled = false;
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbName.Location = new System.Drawing.Point(41, 4);
             this.tbName.Multiline = true;
             this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(207, 32);
             this.tbName.TabIndex = 4;
             this.tbName.Text = "Proszek do prania";
@@ -79,11 +80,11 @@
             // tbBrand
             // 
             this.tbBrand.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbBrand.Enabled = false;
             this.tbBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbBrand.Location = new System.Drawing.Point(254, 3);
             this.tbBrand.Multiline = true;
             this.tbBrand.Name = "tbBrand";
+            this.tbBrand.ReadOnly = true;
             this.tbBrand.Size = new System.Drawing.Size(216, 32);
             this.tbBrand.TabIndex = 5;
             this.tbBrand.Text = "Ariel";

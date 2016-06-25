@@ -12,8 +12,10 @@ namespace mShop.Views
 {
     public partial class PageChangerControl : UserControl
     {
+        public event EventHandler<PageChangedArgs> PageChanged;
+
         private int _currentPage = 0;
-        private int _maxNumberOfPages = 1;
+        private int _maxNumberOfPages = 0;
         public int MaxNumberOfPages {
             get { return _maxNumberOfPages; }
             set {
@@ -26,8 +28,6 @@ namespace mShop.Views
         {
             InitializeComponent();
         }
-
-        public event EventHandler<PageChangedArgs> PageChanged;
 
         private void btnNextPage_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,6 @@ namespace mShop.Views
         public PageChangedArgs(int currentPage)
         {
             CurrentPage = currentPage;
-            
         }
     }
 }

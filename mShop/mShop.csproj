@@ -131,6 +131,7 @@
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ShopControlView\SearchProductArgs.cs" />
+    <Compile Include="Views\ShopControlView\SelectedProductArgs.cs" />
     <Compile Include="Views\ShopControlView\ShopControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>

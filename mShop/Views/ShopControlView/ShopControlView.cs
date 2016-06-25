@@ -13,17 +13,14 @@ namespace mShop.Views
     public partial class ShopControlView : UserControl, IView
     {
         public event Action ForceUpdateProductsList;
+        public event EventHandler<SelectedProductArgs> SelectedProducts;
         public event EventHandler<SearchItemArgs> SearchProduct;
         public event Action Logout;
 
         private int _currentPage = 0;
         private int _maxNumberOfPages = 0;
 
-        public void ChangeCurrentPage(object sender, PageChangedArgs e)
-        {
-            _currentPage = sender != null ? e.CurrentPage : 0;
-            ForceUpdateProductsList?.Invoke();
-        }
+        public ViewType Type { get; set; }
 
         public ShopControlView()
         {
@@ -33,7 +30,16 @@ namespace mShop.Views
             CreateSearchOptions();
         }
 
-        public ViewType Type { get; set; }
+        public void ProductSelected()
+        {
+            //SelectedProducts?.Invoke();
+        }
+
+        public void ChangeCurrentPage(object sender, PageChangedArgs e)
+        {
+            _currentPage = sender != null ? e.CurrentPage : 0;
+            ForceUpdateProductsList?.Invoke();
+        }
 
         public void SetError(string info)
         {
@@ -56,19 +62,22 @@ namespace mShop.Views
             AddProductControls(list);
         }
 
-        public void UpdateCart(List<products_in_shop> list)
+        private void UpdateCart(List<products_in_shop> list)
         {
-            int y = 0;
-            foreach (var x in list)
+            if (list != null)
             {
-                TextBox product = new TextBox();
-                product.Enabled = false;
-                product.BorderStyle = BorderStyle.None;
-                product.Text = x.Name + " - " + x.Brand;
-                product.Size = new Size(300, 20);
-                product.Location = new System.Drawing.Point(0, y);
-                panelCart.Controls.Add(product);
-                y += Constants.ConstantValues.ProductInCartMargin;
+                int y = 0;
+                foreach (var x in list)
+                {
+                    TextBox product = new TextBox();
+                    product.Enabled = false;
+                    product.BorderStyle = BorderStyle.None;
+                    product.Text = x.Name + " - " + x.Brand;
+                    product.Size = new Size(300, 20);
+                    product.Location = new System.Drawing.Point(0, y);
+                    panelCart.Controls.Add(product);
+                    y += Constants.ConstantValues.ProductInCartMargin;
+                }
             }
         }
 
@@ -83,24 +92,27 @@ namespace mShop.Views
 
         private void AddProductControls(List<products_in_shop> list)
         {
-            _maxNumberOfPages = MaxNumberOfPages(list.Count);
-            SetMaxNumberOfPages();
-            int controlsToAdd = Constants.ConstantValues.NumberOfControlsOnPage;
-
-            if ((_currentPage+1) * controlsToAdd > list.Count)
+            if (list != null)
             {
-                int controlsOnLastPage = list.Count % Constants.ConstantValues.NumberOfControlsOnPage;
-                controlsToAdd = controlsOnLastPage;
-                _currentPage = _maxNumberOfPages -1;
-            }
+                _maxNumberOfPages = MaxNumberOfPages(list.Count);
+                SetMaxNumberOfPages();
+                int controlsToAdd = Constants.ConstantValues.NumberOfControlsOnPage;
 
-            int y = 0;
-            foreach (var x in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
-            {
-                var control = new ProductControl(x.Name, x.Brand, x.Quantity);
-                control.Location = new System.Drawing.Point(0, y);
-                gbProductsList.Controls.Add(control);
-                y += Constants.ConstantValues.ProductControlMargin;
+                if ((_currentPage + 1) * controlsToAdd > list.Count)
+                {
+                    int controlsOnLastPage = list.Count % Constants.ConstantValues.NumberOfControlsOnPage;
+                    controlsToAdd = controlsOnLastPage;
+                    _currentPage = _maxNumberOfPages - 1;
+                }
+
+                int y = 0;
+                foreach (var x in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
+                {
+                    var control = new ProductControl(x.Name, x.Brand, x.Quantity,this);
+                    control.Location = new System.Drawing.Point(0, y);
+                    gbProductsList.Controls.Add(control);
+                    y += Constants.ConstantValues.ProductControlMargin;
+                }
             }
         }
 
