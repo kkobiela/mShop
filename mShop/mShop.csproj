@@ -158,6 +158,9 @@
     <EmbeddedResource Include="Views\ShopControlView\PageChangerControl.resx">
       <DependentUpon>PageChangerControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShopControlView\ProductControl.resx">
+      <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ShopControlView\ShopControlView.resx">
       <DependentUpon>ShopControlView.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,11 +12,12 @@ namespace mShop.Views
 {
     public partial class ProductControl : UserControl
     {
-        public ProductControl(string name, string brand)
+        public ProductControl(string name, string brand, int quantity)
         {
             InitializeComponent();
             this.tbName.Text = name;
             this.tbBrand.Text = brand;
+            this.lbAvailableQuantity.Text = quantity.ToString();
         }
     }
 }

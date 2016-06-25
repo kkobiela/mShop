@@ -14,13 +14,13 @@ namespace mShop.Presenters
         public event EventHandler<ViewChangedArgs> ViewChanged;
         private ShopControlView _view;
         private Model _model;
+        private ShoppingCart _cart = new ShoppingCart();
 
         public ShopControlPresenter(Model model, ShopControlView view)
         {
             _view = view;
             _model = model;
             _model.OpenConnection(ConnectionType.Shop);
-            //UpdateProductsList();
             _view.ForceUpdateProductsList += UpdateProductsList;
             _view.SearchProduct += View_SearchProduct;
             _view.Logout += View_Logout;

@@ -81,11 +81,6 @@ namespace mShop.Views
             }
         }
 
-        internal void UpdateProductsList(object temporaryProductsData)
-        {
-            throw new NotImplementedException();
-        }
-
         private void AddProductControls(List<products_in_shop> list)
         {
             _maxNumberOfPages = MaxNumberOfPages(list.Count);
@@ -102,7 +97,7 @@ namespace mShop.Views
             int y = 0;
             foreach (var x in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
             {
-                var control = new ProductControl(x.Name, x.Brand);
+                var control = new ProductControl(x.Name, x.Brand, x.Quantity);
                 control.Location = new System.Drawing.Point(0, y);
                 gbProductsList.Controls.Add(control);
                 y += Constants.ConstantValues.ProductControlMargin;

@@ -34,7 +34,7 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbBrand = new System.Windows.Forms.TextBox();
             this.lbQuantity = new System.Windows.Forms.Label();
-            this.lAvailableQuantity = new System.Windows.Forms.Label();
+            this.lbAvailableQuantity = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
             this.SuspendLayout();
@@ -97,21 +97,21 @@
             this.lbQuantity.TabIndex = 6;
             this.lbQuantity.Text = "Quantity:";
             // 
-            // lAvailableQuantity
+            // lbAvailableQuantity
             // 
-            this.lAvailableQuantity.AutoSize = true;
-            this.lAvailableQuantity.Location = new System.Drawing.Point(517, 0);
-            this.lAvailableQuantity.Name = "lAvailableQuantity";
-            this.lAvailableQuantity.Size = new System.Drawing.Size(31, 13);
-            this.lAvailableQuantity.TabIndex = 7;
-            this.lAvailableQuantity.Text = "1021";
+            this.lbAvailableQuantity.AutoSize = true;
+            this.lbAvailableQuantity.Location = new System.Drawing.Point(517, 0);
+            this.lbAvailableQuantity.Name = "lbAvailableQuantity";
+            this.lbAvailableQuantity.Size = new System.Drawing.Size(31, 13);
+            this.lbAvailableQuantity.TabIndex = 7;
+            this.lbAvailableQuantity.Text = "1021";
             // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.lAvailableQuantity);
+            this.Controls.Add(this.lbAvailableQuantity);
             this.Controls.Add(this.lbQuantity);
             this.Controls.Add(this.tbBrand);
             this.Controls.Add(this.tbName);
@@ -135,6 +135,6 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbBrand;
         private System.Windows.Forms.Label lbQuantity;
-        private System.Windows.Forms.Label lAvailableQuantity;
+        private System.Windows.Forms.Label lbAvailableQuantity;
     }
 }
