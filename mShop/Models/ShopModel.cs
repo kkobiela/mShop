@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.EntityClient;
+using System.Transactions;
 namespace mShop.Models
 {
     public class ShopModel
@@ -86,31 +87,38 @@ namespace mShop.Models
             }
         }
 
-        private bool BuyProduct(int Product_Id, int quantity)
-        {
-            try
-            {
-                if (quantity > 0)
-                {
-                    var orginal = db.Products_Shops.SingleOrDefault(item => item.S_Id == currentShop && item.P_Id == Product_Id);
-                    orginal.Quantity -= quantity;
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
-        public bool CompleteOrder()
+        public bool CompleteOrder(ShoppingCart shoppingCart)
         {
-            return true;
+            bool result = false;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    foreach (var product in shoppingCart.GetProducts())
+                    {
+                        if (product.Value > 0)
+                        {
+                            var orginal = db.Products_Shops.SingleOrDefault(item => item.S_Id == currentShop && item.P_Id == product.Key.Id);
+                            orginal.Quantity -= product.Value;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                    }
+                    db.SaveChanges();
+                    transaction.Complete();
+                    result = true;
+                }
+                catch
+                {
+                    result = false;
+                }
+            }
+            return result;
+
         }
     }
 }
