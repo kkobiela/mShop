@@ -103,18 +103,19 @@ namespace mShop.Models
             }
         }
 
-        private int GetUserWarehouseId(string login)
+        private int? GetUserWarehouseId(string login)
         {
             using (var db = new mshopEntities(loginuser, loginpassword))
             {
                 try
                 {
-                    int user = Convert.ToUInt16(db.Users.Where(item => item.Login == login).Select(item => item.W_Id));
-                    return user;
+                    var user = db.Users.Where(item => item.Login == login).ToList();
+                    int? warehouseId = user[0].W_Id;
+                    return warehouseId;
                 }
-                catch
+                catch (Exception e)
                 {
-                    return 0;
+                    throw new NotImplementedException();
                 }
             }
         }

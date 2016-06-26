@@ -33,9 +33,14 @@ namespace mShop
         public bool UpdateProductQuantity(products_in_shop product, int newQuantity)
         {
             if(cart.ContainsKey(product))
-            { 
-                cart[product] = newQuantity;
-                return true;
+            {
+                if (newQuantity > 0)
+                {
+                    cart[product] = newQuantity;
+                    return true;
+                }
+                else return false;
+                
             }
             return false;
         }

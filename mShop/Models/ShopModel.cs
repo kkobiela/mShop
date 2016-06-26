@@ -14,12 +14,13 @@ namespace mShop.Models
         private mshopEntities db;
         public List<products_in_shop> TemporaryProductsData { get; set; } = null;
 
-
         public ShopModel(mshopEntities database, int? cS)
         {
             db = database;
             currentShop = cS;
         }
+
+        #region Get produstc from shop
 
         public List<products_in_shop> GetProducts()
         {
@@ -64,7 +65,7 @@ namespace mShop.Models
         {
             try
             {
-                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category.Contains(productCategory)).ToList();
+                List<products_in_shop> products = db.products_in_shop.Where(item => item.S_Id == currentShop && item.Category == productCategory).ToList();
                 return products;
             }
             catch
@@ -87,6 +88,78 @@ namespace mShop.Models
             }
         }
 
+        #endregion    
+
+        #region Get products from Warehouse
+
+        public List<products_in_warehouse> GetProductsFromWarehouse(int W_id)
+        {
+            try
+            {
+                var products = db.products_in_warehouse.Where(item => item.W_Id == W_id).ToList();
+                return products;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<products_in_warehouse> GetProductsFromWarehouseByName(int W_id, string productName)
+        {
+            try
+            { 
+                var products = db.products_in_warehouse.Where(item => item.W_Id == W_id && item.Name.Contains(productName)).ToList();
+                return products;
+             }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<products_in_warehouse> GetProductsFromWarehouseByBrand(int W_id, string productName)
+        {
+            try
+            { 
+                var products = db.products_in_warehouse.Where(item => item.W_Id == W_id && item.Brand.Contains(productName)).ToList();
+                return products;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<products_in_warehouse> GetProductsFromWarehouseByBarcode(int W_id, string productBarcode)
+        {
+            try
+            { 
+                var products = db.products_in_warehouse.Where(item => item.W_Id == W_id && item.Barcode.Contains(productBarcode)).ToList();
+                return products;
+            }
+            catch
+            {
+                return null;
+            }
+
+
+        }
+
+        public List<products_in_warehouse> GetProductsFromWarehouseByCategory(int W_id, string productCategory)
+        {
+            try
+            { 
+                var products = db.products_in_warehouse.Where(item => item.W_Id == W_id && item.Category == productCategory).ToList();
+                return products;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        #endregion
 
         public bool CompleteOrder(ShoppingCart shoppingCart)
         {
