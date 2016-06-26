@@ -16,11 +16,24 @@ namespace mShop.Views
 
         private int _currentPage = 0;
         private int _maxNumberOfPages = 0;
-        public int MaxNumberOfPages {
+
+        public int MaxNumberOfPages
+        {
             get { return _maxNumberOfPages; }
             set {
                 _maxNumberOfPages = value;
                 ChangeMaxPageLabel(value);
+            }
+        }
+
+        public int CurrentPage
+        {
+            set {
+                if (value > 0 && value < _maxNumberOfPages)
+                {
+                    _currentPage = value -1;
+                    ChangeCurrentPageLabel(value -1);
+                }
             }
         }
 
