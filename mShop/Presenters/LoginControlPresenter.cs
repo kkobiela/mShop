@@ -41,18 +41,14 @@ namespace mShop.Presenters
         {
             username.Trim();
             password.Trim();
-            if(!string.IsNullOrEmpty(username) )//|| string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(username))
             {
-                if(_model.UserExists(username, password))
+                if (_model.UserExists(username, password))
                 {
                     return true;
                 }
-                return false;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         void View_Login(object sender, LoginEventArgs e)

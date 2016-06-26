@@ -8,14 +8,14 @@ namespace mShop
 {
     public class ShoppingCart
     {
-        private List<products_in_shop> cart = new List<products_in_shop>();
+        private Dictionary<products_in_shop, int> cart = new Dictionary<products_in_shop, int>();
 
-        public bool AddProduct(products_in_shop product)
+        public bool AddProduct(products_in_shop product, int quantity)
         {
-            int exist = cart.Where(item => item.Id == product.Id).ToList().Count;
+            int exist = cart.Where(item => item.Key.Id == product.Id).ToList().Count;
             if (exist == 0)
             {
-                cart.Add(product);
+                cart.Add(product, quantity);
                 return true;
             }
             else
@@ -24,41 +24,23 @@ namespace mShop
             }
         }
 
-        public bool RemoveProduct(int productID)
+        public bool RemoveProduct(products_in_shop product)
         {
-            foreach(var product in cart)
-            {
-                if(product.Id == productID)
-                {
-                    cart.Remove(product);
-                    return true;
-                }
-            }
-            return false;
+            return cart.Remove(product);
 
         }
 
-        public bool UpdateProductQuantity(int productID, int quantity)
+        public bool UpdateProductQuantity(products_in_shop product, int newQuantity)
         {
-            foreach(var product in cart)
-            {
-                if(product.Id == productID)
-                {
-                    if (quantity > 0)
-                    {
-                        product.Quantity = quantity;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+            if(cart.ContainsKey(product))
+            { 
+                cart[product] = newQuantity;
+                return true;
             }
             return false;
         }
 
-        public List<products_in_shop> GetProducts()
+        public Dictionary<products_in_shop, int> GetProducts()
         {
             return cart;
         }

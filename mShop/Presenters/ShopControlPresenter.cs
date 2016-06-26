@@ -1,4 +1,5 @@
 ﻿using mShop.Constants;
+using mShop.Extensions;
 using mShop.Models;
 using mShop.Views;
 using System;
@@ -24,6 +25,13 @@ namespace mShop.Presenters
             _view.ForceUpdateProductsList += UpdateProductsList;
             _view.SearchProduct += View_SearchProduct;
             _view.Logout += View_Logout;
+            _view.ProductChecked += View_ProductChecked;
+        }
+
+        private void View_ProductChecked(products_in_shop item, int quantity)
+        {
+            _cart.AddProduct(item, quantity);
+            _view.UpdateCart(_cart.GetProducts());
         }
 
         private void View_SearchProduct(object sender, SearchItemArgs e)

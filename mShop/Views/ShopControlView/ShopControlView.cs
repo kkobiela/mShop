@@ -13,7 +13,7 @@ namespace mShop.Views
     public partial class ShopControlView : UserControl, IView
     {
         public event Action ForceUpdateProductsList;
-        public event EventHandler<SelectedProductArgs> SelectedProducts;
+        public event Action<products_in_shop, int> ProductChecked;
         public event EventHandler<SearchItemArgs> SearchProduct;
         public event Action Logout;
 
@@ -30,9 +30,9 @@ namespace mShop.Views
             CreateSearchOptions();
         }
 
-        public void ProductSelected()
+        public void ProductControl_ProductChecked(products_in_shop item, int quantity)
         {
-            //SelectedProducts?.Invoke();
+            ProductChecked?.Invoke(item, quantity);
         }
 
         public void ChangeCurrentPage(object sender, PageChangedArgs e)
@@ -62,7 +62,7 @@ namespace mShop.Views
             AddProductControls(list);
         }
 
-        private void UpdateCart(List<products_in_shop> list)
+        public void UpdateCart(Dictionary<products_in_shop, int> list)
         {
             if (list != null)
             {
@@ -72,7 +72,7 @@ namespace mShop.Views
                     TextBox product = new TextBox();
                     product.Enabled = false;
                     product.BorderStyle = BorderStyle.None;
-                    product.Text = x.Name + " - " + x.Brand;
+                    product.Text = x.Key.Name + " - " + x.Key.Brand + " - " + x.Value;
                     product.Size = new Size(300, 20);
                     product.Location = new System.Drawing.Point(0, y);
                     panelCart.Controls.Add(product);
@@ -106,10 +106,11 @@ namespace mShop.Views
                 }
 
                 int y = 0;
-                foreach (var x in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
+                foreach (var item in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
                 {
-                    var control = new ProductControl(x.Name, x.Brand, x.Quantity,this);
+                    var control = new ProductControl(item);
                     control.Location = new System.Drawing.Point(0, y);
+                    control.ProductChecked += ProductControl_ProductChecked;
                     gbProductsList.Controls.Add(control);
                     y += Constants.ConstantValues.ProductControlMargin;
                 }
