@@ -26,6 +26,7 @@ namespace mShop.Presenters
             _view.SearchProduct += View_SearchProduct;
             _view.Logout += View_Logout;
             _view.ProductChecked += View_ProductChecked;
+            _view.LoginOfCurrentUser = _model.Login;
         }
 
         private void View_ProductChecked(products_in_shop item, int quantity)
@@ -54,7 +55,8 @@ namespace mShop.Presenters
             if(data.Count > 0)
             {
                 _model.ShopModel.TemporaryProductsData = data;
-                _view.UpdateProductsList(data);
+                var dict = CompareWithCartAndReturnDictionary(data);
+                _view.UpdateProductsList(dict);
             }
             else
             {
@@ -79,13 +81,26 @@ namespace mShop.Presenters
         
         public void UpdateProductsList()
         {
-            _view.UpdateProductsList(_model.ShopModel.TemporaryProductsData);
+            var data = CompareWithCartAndReturnDictionary(_model.ShopModel.TemporaryProductsData);
+            _view.UpdateProductsList(data);
         }
 
         public void UpdateView(string data)
         {
             throw new NotImplementedException();
         }
+
+        private Dictionary<products_in_shop, bool> CompareWithCartAndReturnDictionary(List<products_in_shop> list)
+        {
+            var data = new Dictionary<products_in_shop, bool>();
+            foreach (var item in list)
+            {
+                data.Add(item, IsInCart(item));
+            }
+            return data;
+        }
+
+        private bool IsInCart(products_in_shop item) => _cart.GetProducts().ContainsKey(item);
 
     }
 }

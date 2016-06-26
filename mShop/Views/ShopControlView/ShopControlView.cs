@@ -16,6 +16,7 @@ namespace mShop.Views
         public event Action<products_in_shop, int> ProductChecked;
         public event EventHandler<SearchItemArgs> SearchProduct;
         public event Action Logout;
+        public string LoginOfCurrentUser { set { tbLogin.Text = value; } }
 
         private int _currentPage = 0;
         private int _maxNumberOfPages = 0;
@@ -57,7 +58,7 @@ namespace mShop.Views
             throw new NotImplementedException();
         }
 
-        public void UpdateProductsList(List<products_in_shop> list)
+        public void UpdateProductsList(Dictionary<products_in_shop, bool> list)
         {
             DeleteAllProductControls();
             AddProductControls(list);
@@ -91,7 +92,7 @@ namespace mShop.Views
             }
         }
 
-        private void AddProductControls(List<products_in_shop> list)
+        private void AddProductControls(Dictionary<products_in_shop, bool> list)
         {
             if (list != null)
             {
@@ -109,7 +110,7 @@ namespace mShop.Views
                 int y = 0;
                 foreach (var item in list.ToList().GetRange(_currentPage * Constants.ConstantValues.NumberOfControlsOnPage, controlsToAdd))
                 {
-                    var control = new ProductControl(item);
+                    var control = new ProductControl(item.Key, item.Value);
                     control.Location = new System.Drawing.Point(0, y);
                     control.ProductChecked += ProductControl_ProductChecked;
                     gbProductsList.Controls.Add(control);

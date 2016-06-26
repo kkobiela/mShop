@@ -5,7 +5,7 @@ namespace mShop.Extensions
 {
     public static class Extensions
     {
-        public static products_in_shop DeepClone(this products_in_shop source)
+        public static products_in_shop DeepCopy(this products_in_shop source)
         {
             var ser = new DataContractSerializer(typeof(products_in_shop));
             using (var stream = new MemoryStream())

@@ -23,7 +23,7 @@ namespace mShop.Models
 
         #region Properties
 
-        public string Login{ private get; set;}
+        public string Login{ get; set;}
         public string Password { private get; set; }
 
         public ShopModel ShopModel { get; private set; }

@@ -15,12 +15,13 @@ namespace mShop.Views
         public event Action<products_in_shop, int> ProductChecked;
         private products_in_shop _item;
 
-        public ProductControl(products_in_shop item)
+        public ProductControl(products_in_shop item, bool isChecked)
         {
             InitializeComponent();
             this.tbName.Text = item.Name;
             this.tbBrand.Text = item.Brand;
             this.lbAvailableQuantity.Text = item.Quantity.ToString();
+            this.cbProduct.Checked = isChecked;
             _item = item;
         }
 

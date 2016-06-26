@@ -122,7 +122,7 @@
             this.tbLogin.ReadOnly = true;
             this.tbLogin.Size = new System.Drawing.Size(170, 13);
             this.tbLogin.TabIndex = 8;
-            this.tbLogin.Text = "tbLogin";
+            this.tbLogin.Text = "user";
             this.tbLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pageChangerControl

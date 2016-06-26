@@ -9,8 +9,6 @@ using mShop.Constants;
 
 namespace mShop.Presenters
 {
-
-
     public class LoginControlPresenter : IPresenter
     {
         private LoginControlView _view;
