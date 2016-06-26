@@ -48,6 +48,7 @@ namespace mShop.Views
 
         public void SetSearchError(string info)
         {
+            pageChangerControl.MaxNumberOfPages = 1;
             MessageBox.Show(info);
         }
 
@@ -127,6 +128,12 @@ namespace mShop.Views
             pageChangerControl.MaxNumberOfPages = _maxNumberOfPages;
         }
 
+        private void SetFirstPage()
+        {
+            _currentPage = 0;
+            pageChangerControl.CurrentPage = _currentPage + 1;
+        }
+
         private void CreateSearchOptions()
         {
             cbSearchCategory.Items.Add(Constants.ConstantTexts.Name);
@@ -143,6 +150,7 @@ namespace mShop.Views
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            SetFirstPage();
             SearchItemArgs args = null;
             switch (cbSearchCategory.SelectedItem.ToString())
             {

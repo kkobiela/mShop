@@ -51,7 +51,7 @@ namespace mShop.Presenters
             else
             {
                 _model.ShopModel.TemporaryProductsData = null;
-                //_view.UpdateProductsList(null);
+                _view.UpdateProductsList(null);
                 _view.SetSearchError(ConstantTexts.CannotFindProducts);
             }
         }
