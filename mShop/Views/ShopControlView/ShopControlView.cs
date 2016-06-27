@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mShop.Cart;
 
 namespace mShop.Views
 {
@@ -58,9 +59,9 @@ namespace mShop.Views
             throw new NotImplementedException();
         }
 
-        public void UpdateProductsList(Dictionary<products_in_shop, bool> list)
+        public void UpdateProductsList(Dictionary<products_in_shop, int> list)
         {
-            DeleteAllProductControls();
+            DeleteItemsInControl(gbProductsList);
             AddProductControls(list);
         }
 
@@ -69,17 +70,23 @@ namespace mShop.Views
             if (list != null)
             {
                 int y = 0;
+                DeleteItemsInControl(panelCart);
                 foreach (var x in list)
                 {
-                    TextBox product = new TextBox();
-                    product.Enabled = false;
-                    product.BorderStyle = BorderStyle.None;
-                    product.Text = x.Key.Name + " - " + x.Key.Brand + " - " + x.Value;
-                    product.Size = new Size(300, 20);
-                    product.Location = new System.Drawing.Point(0, y);
-                    panelCart.Controls.Add(product);
+                    ShoppingCartControlView item = new ShoppingCartControlView(x.Key, x.Value);
+                    item.Location = new System.Drawing.Point(0, y);
+                    panelCart.Controls.Add(item);
                     y += Constants.ConstantValues.ProductInCartMargin;
                 }
+            }
+        }
+
+        private void DeleteItemsInControl(Control ctrl)
+        {
+            int n = ctrl.Controls.Count;
+            for (int i = 0; i < n; i++)
+            {
+                ctrl.Controls.Remove(ctrl.Controls[0]);
             }
         }
 
@@ -92,7 +99,7 @@ namespace mShop.Views
             }
         }
 
-        private void AddProductControls(Dictionary<products_in_shop, bool> list)
+        private void AddProductControls(Dictionary<products_in_shop, int> list)
         {
             if (list != null)
             {

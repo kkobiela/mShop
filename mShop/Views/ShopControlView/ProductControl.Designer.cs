@@ -30,11 +30,11 @@
         {
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.numericUpDownQuantity = new System.Windows.Forms.NumericUpDown();
-            this.cbProduct = new System.Windows.Forms.CheckBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbBrand = new System.Windows.Forms.TextBox();
             this.lbQuantity = new System.Windows.Forms.Label();
             this.lbAvailableQuantity = new System.Windows.Forms.Label();
+            this.btnAddToCart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
             this.SuspendLayout();
@@ -50,20 +50,10 @@
             // 
             // numericUpDownQuantity
             // 
-            this.numericUpDownQuantity.Location = new System.Drawing.Point(476, 15);
+            this.numericUpDownQuantity.Location = new System.Drawing.Point(409, 16);
             this.numericUpDownQuantity.Name = "numericUpDownQuantity";
             this.numericUpDownQuantity.Size = new System.Drawing.Size(93, 20);
             this.numericUpDownQuantity.TabIndex = 2;
-            // 
-            // cbProduct
-            // 
-            this.cbProduct.AutoSize = true;
-            this.cbProduct.Location = new System.Drawing.Point(575, 18);
-            this.cbProduct.Name = "cbProduct";
-            this.cbProduct.Size = new System.Drawing.Size(15, 14);
-            this.cbProduct.TabIndex = 3;
-            this.cbProduct.UseVisualStyleBackColor = true;
-            this.cbProduct.CheckedChanged += new System.EventHandler(this.cbProduct_CheckedChanged);
             // 
             // tbName
             // 
@@ -85,14 +75,14 @@
             this.tbBrand.Multiline = true;
             this.tbBrand.Name = "tbBrand";
             this.tbBrand.ReadOnly = true;
-            this.tbBrand.Size = new System.Drawing.Size(216, 32);
+            this.tbBrand.Size = new System.Drawing.Size(149, 32);
             this.tbBrand.TabIndex = 5;
             this.tbBrand.Text = "Ariel";
             // 
             // lbQuantity
             // 
             this.lbQuantity.AutoSize = true;
-            this.lbQuantity.Location = new System.Drawing.Point(473, 0);
+            this.lbQuantity.Location = new System.Drawing.Point(409, 0);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(49, 13);
             this.lbQuantity.TabIndex = 6;
@@ -101,22 +91,33 @@
             // lbAvailableQuantity
             // 
             this.lbAvailableQuantity.AutoSize = true;
-            this.lbAvailableQuantity.Location = new System.Drawing.Point(517, 0);
+            this.lbAvailableQuantity.Location = new System.Drawing.Point(455, 0);
             this.lbAvailableQuantity.Name = "lbAvailableQuantity";
             this.lbAvailableQuantity.Size = new System.Drawing.Size(31, 13);
             this.lbAvailableQuantity.TabIndex = 7;
             this.lbAvailableQuantity.Text = "1021";
+            // 
+            // btnAddToCart
+            // 
+            this.btnAddToCart.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToCart.Location = new System.Drawing.Point(508, 3);
+            this.btnAddToCart.Name = "btnAddToCart";
+            this.btnAddToCart.Size = new System.Drawing.Size(82, 32);
+            this.btnAddToCart.TabIndex = 8;
+            this.btnAddToCart.Text = "Add to cart";
+            this.btnAddToCart.UseVisualStyleBackColor = true;
+            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.lbAvailableQuantity);
             this.Controls.Add(this.lbQuantity);
             this.Controls.Add(this.tbBrand);
             this.Controls.Add(this.tbName);
-            this.Controls.Add(this.cbProduct);
             this.Controls.Add(this.numericUpDownQuantity);
             this.Controls.Add(this.pbImage);
             this.Name = "ProductControl";
@@ -132,10 +133,10 @@
 
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.NumericUpDown numericUpDownQuantity;
-        private System.Windows.Forms.CheckBox cbProduct;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbBrand;
         private System.Windows.Forms.Label lbQuantity;
         private System.Windows.Forms.Label lbAvailableQuantity;
+        private System.Windows.Forms.Button btnAddToCart;
     }
 }

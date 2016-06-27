@@ -15,17 +15,17 @@ namespace mShop.Views
         public event Action<products_in_shop, int> ProductChecked;
         private products_in_shop _item;
 
-        public ProductControl(products_in_shop item, bool isChecked)
+        public ProductControl(products_in_shop item, int checkedItemQuantity)
         {
             InitializeComponent();
             this.tbName.Text = item.Name;
             this.tbBrand.Text = item.Brand;
             this.lbAvailableQuantity.Text = item.Quantity.ToString();
-            this.cbProduct.Checked = isChecked;
+            this.numericUpDownQuantity.Value = checkedItemQuantity;
             _item = item;
         }
 
-        private void cbProduct_CheckedChanged(object sender, EventArgs e)
+        private void btnAddToCart_Click(object sender, EventArgs e)
         {
             int quantity = Convert.ToInt32(numericUpDownQuantity.Value);
             ProductChecked?.Invoke(_item, quantity);

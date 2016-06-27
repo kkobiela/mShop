@@ -31,7 +31,10 @@ namespace mShop.Presenters
 
         private void View_ProductChecked(products_in_shop item, int quantity)
         {
-            _cart.AddProduct(item, quantity);
+            if(quantity > 0 && quantity <= item.Quantity)
+            { 
+                _cart.AddProduct(item, quantity);
+            }
             _view.UpdateCart(_cart.GetProducts());
         }
 
@@ -90,17 +93,17 @@ namespace mShop.Presenters
             throw new NotImplementedException();
         }
 
-        private Dictionary<products_in_shop, bool> CompareWithCartAndReturnDictionary(List<products_in_shop> list)
+        private Dictionary<products_in_shop, int> CompareWithCartAndReturnDictionary(List<products_in_shop> list)
         {
-            var data = new Dictionary<products_in_shop, bool>();
+            var data = new Dictionary<products_in_shop, int>();
             foreach (var item in list)
             {
-                data.Add(item, IsInCart(item));
+                data.Add(item, ProductQuantityInCart(item));
             }
             return data;
         }
 
         private bool IsInCart(products_in_shop item) => _cart.GetProducts().ContainsKey(item);
-
+        private int ProductQuantityInCart(products_in_shop item) => _cart.ProductQuantity(item);
     }
 }

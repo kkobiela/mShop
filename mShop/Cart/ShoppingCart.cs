@@ -10,24 +10,25 @@ namespace mShop
     {
         private Dictionary<products_in_shop, int> cart = new Dictionary<products_in_shop, int>();
 
-        public bool AddProduct(products_in_shop product, int quantity)
+        public void AddProduct(products_in_shop product, int quantity)
         {
-            int exist = cart.Where(item => item.Key.Id == product.Id).ToList().Count;
-            if (exist == 0)
+            if(cart.ContainsKey(product))
             {
-                cart.Add(product, quantity);
-                return true;
+                cart[product] = quantity;
+                Console.WriteLine("dziala??");
             }
             else
             {
-                return false;
+                cart.Add(product, quantity);
             }
+
         }
+
+        public int ProductQuantity(products_in_shop product) => cart.ContainsKey(product) ? cart[product] : 0;
 
         public bool RemoveProduct(products_in_shop product)
         {
             return cart.Remove(product);
-
         }
 
         public bool UpdateProductQuantity(products_in_shop product, int newQuantity)
@@ -37,6 +38,7 @@ namespace mShop
                 if (newQuantity > 0)
                 {
                     cart[product] = newQuantity;
+                    Console.WriteLine("dz");
                     return true;
                 }
                 else return false;
