@@ -22,15 +22,19 @@ namespace mShop.Presenters
             _view = view;
             _model = model;
             _model.OpenConnection(ConnectionType.Shop);
+            _view.LoginOfCurrentUser = _model.Login;
+            AttachToViewEvents();
+        }
+
+        private void AttachToViewEvents()
+        {
             _view.ForceUpdateProductsList += UpdateProductsList;
             _view.SearchProduct += View_SearchProduct;
             _view.Logout += View_Logout;
             _view.ProductAdded += View_ProductChecked;
             _view.ProductRemovedFromCart += View_ProductRemovedFromCart;
-            _view.LoginOfCurrentUser = _model.Login;
             _view.SellProduct += View_SellProducts;
         }
-
 
         private void View_SellProducts()
         {
@@ -94,11 +98,6 @@ namespace mShop.Presenters
             ViewChanged?.Invoke(this, new ViewChangedArgs(ViewType.Login));
         }
 
-        public void UpdateView(List<string> data)
-        {
-            throw new NotImplementedException();
-        }
-
         private void RefreshView()
         {
             _model.ShopModel.TemporaryProductsData = _model.ShopModel.GetProducts();
@@ -106,15 +105,10 @@ namespace mShop.Presenters
             _view.UpdateCart(_cart.GetProducts());
         }
         
-        public void UpdateProductsList()
+        private void UpdateProductsList()
         {
             var data = CompareWithCartAndReturnDictionary(_model.ShopModel.TemporaryProductsData);
             _view.UpdateProductsList(data);
-        }
-
-        public void UpdateView(string data)
-        {
-            throw new NotImplementedException();
         }
 
         private Dictionary<products_in_shop, int> CompareWithCartAndReturnDictionary(List<products_in_shop> list)
@@ -122,7 +116,7 @@ namespace mShop.Presenters
             var data = new Dictionary<products_in_shop, int>();
             foreach (var item in list)
             {
-                data.Add(item, ProductQuantityInCart(item));
+                data.Add(item, _cart.ProductQuantity(item));
             }
             return data;
         }
@@ -135,6 +129,5 @@ namespace mShop.Presenters
         }
 
         private bool IsInCart(products_in_shop item) => _cart.GetProducts().ContainsKey(item);
-        private int ProductQuantityInCart(products_in_shop item) => _cart.ProductQuantity(item);
     }
 }

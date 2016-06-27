@@ -24,17 +24,6 @@ namespace mShop.Presenters
             
         }
 
-
-        public void UpdateView(List<string> data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateView(string data)
-        {
-            throw new NotImplementedException();
-        }
-
         private bool CorrectUsernameAndPassword(string username, string password)
         {
             username.Trim();
@@ -49,7 +38,7 @@ namespace mShop.Presenters
             return false;
         }
 
-        void View_Login(object sender, LoginEventArgs e)
+        private void View_Login(object sender, LoginEventArgs e)
         {
             LoginControlView lc = sender as LoginControlView;
             if (lc != null)

@@ -9,12 +9,7 @@ namespace mShop.Presenters
 {
     public interface IPresenter
     {
-        void UpdateView(string data);
-        void UpdateView(List<string> data);
-
-        event EventHandler<ViewChangedArgs> ViewChanged;
-
-        
+        event EventHandler<ViewChangedArgs> ViewChanged;   
     }
 
     public class ViewChangedArgs : EventArgs

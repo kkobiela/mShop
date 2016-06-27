@@ -16,7 +16,6 @@ namespace mShop.Views
     public interface IView
     {
         ViewType Type { get; set; }
-        void UpdateData();
         void SetError(string info);
     }
 }
