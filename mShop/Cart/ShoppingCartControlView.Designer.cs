@@ -39,16 +39,16 @@
             this.tbItem.Location = new System.Drawing.Point(0, 8);
             this.tbItem.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.tbItem.Name = "tbItem";
-            this.tbItem.Size = new System.Drawing.Size(345, 13);
+            this.tbItem.Size = new System.Drawing.Size(307, 13);
             this.tbItem.TabIndex = 0;
             this.tbItem.TabStop = false;
             // 
             // btnRemove
             // 
-            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRemove.BackColor = System.Drawing.Color.DarkRed;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(348, 2);
+            this.btnRemove.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRemove.Location = new System.Drawing.Point(310, 2);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(0);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -68,7 +68,7 @@
             this.Controls.Add(this.tbItem);
             this.Name = "ShoppingCartControlView";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(378, 31);
+            this.Size = new System.Drawing.Size(339, 31);
             this.ResumeLayout(false);
             this.PerformLayout();
 
