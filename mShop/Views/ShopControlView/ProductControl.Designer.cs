@@ -58,6 +58,7 @@
             this.numericUpDownQuantity.Name = "numericUpDownQuantity";
             this.numericUpDownQuantity.Size = new System.Drawing.Size(93, 21);
             this.numericUpDownQuantity.TabIndex = 2;
+            this.numericUpDownQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressAddToCart);
             // 
             // tbName
             // 
