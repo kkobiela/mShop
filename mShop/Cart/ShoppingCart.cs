@@ -8,48 +8,24 @@ namespace mShop
 {
     public class ShoppingCart
     {
-        private Dictionary<products_in_shop, int> cart = new Dictionary<products_in_shop, int>();
+        private Dictionary<products_in_shop, int> _cart = new Dictionary<products_in_shop, int>();
 
         public void AddProduct(products_in_shop product, int quantity)
         {
-            if(cart.ContainsKey(product))
+            if(_cart.ContainsKey(product))
             {
-                cart[product] = quantity;
-                Console.WriteLine("dziala??");
+                _cart[product] = quantity;
             }
             else
             {
-                cart.Add(product, quantity);
+                _cart.Add(product, quantity);
             }
-
         }
 
-        public int ProductQuantity(products_in_shop product) => cart.ContainsKey(product) ? cart[product] : 0;
+        public int ProductQuantity(products_in_shop product) => _cart.ContainsKey(product) ? _cart[product] : 0;
 
-        public bool RemoveProduct(products_in_shop product)
-        {
-            return cart.Remove(product);
-        }
+        public bool RemoveProduct(products_in_shop product) => _cart.Remove(product);
 
-        public bool UpdateProductQuantity(products_in_shop product, int newQuantity)
-        {
-            if(cart.ContainsKey(product))
-            {
-                if (newQuantity > 0)
-                {
-                    cart[product] = newQuantity;
-                    Console.WriteLine("dz");
-                    return true;
-                }
-                else return false;
-                
-            }
-            return false;
-        }
-
-        public Dictionary<products_in_shop, int> GetProducts()
-        {
-            return cart;
-        }
+        public Dictionary<products_in_shop, int> GetProducts() => _cart;
     }
 }

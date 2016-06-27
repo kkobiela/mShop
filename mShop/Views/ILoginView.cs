@@ -16,14 +16,11 @@ namespace mShop.Views
         {
             Username = username;
             Password = password;
-
         }
     }
 
     interface ILoginView
     {
-
         event EventHandler<LoginEventArgs> Login;
-
     }
 }
