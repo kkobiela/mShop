@@ -41,5 +41,6 @@ namespace mShop.Constants
         public static string DoYouWantToSellXItemsForX { get; } = "Do you want to sell {0} item(s) for {1}";
         public static string PLN { get; } = "zł";
         public static string ConfirmTransaction { get; } = "Confirm transaction";
+        public static string CannotAddZeroProducts { get; } = "Cannot add 0 products";
     }
 }

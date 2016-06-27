@@ -29,7 +29,14 @@ namespace mShop.Views
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
             int quantity = Convert.ToInt32(numericUpDownQuantity.Value);
-            ProductChecked?.Invoke(_item, quantity);
+            if (quantity > 0)
+            {
+                ProductChecked?.Invoke(_item, quantity);
+            }
+            else
+            {
+                MessageBox.Show(Constants.ConstantTexts.CannotAddZeroProducts);
+            }
         }
     }
 }
