@@ -22,6 +22,7 @@ namespace mShop.Views
             this.tbBrand.Text = item.Brand;
             this.lbAvailableQuantity.Text = item.Quantity.ToString();
             this.numericUpDownQuantity.Value = checkedItemQuantity;
+            this.numericUpDownQuantity.Maximum = item.Quantity;
             _item = item;
         }
 
