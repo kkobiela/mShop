@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mShop.Cart;
+using mShop.Constants;
 
 namespace mShop.Views
 {
@@ -213,9 +214,21 @@ namespace mShop.Views
             SellProduct?.Invoke();
         }
 
-        public void ShoppingCartControl_ProductRemovedFromCart(products_in_shop item)
+        private void ShoppingCartControl_ProductRemovedFromCart(products_in_shop item)
         {
             ProductRemovedFromCart?.Invoke(item);
         }
+
+        public bool IsTransactionOk(string info)
+        {
+            DialogResult r = MessageBox.Show(info, ConstantTexts.ConfirmTransaction, MessageBoxButtons.YesNo);
+            if (r == DialogResult.Yes)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }

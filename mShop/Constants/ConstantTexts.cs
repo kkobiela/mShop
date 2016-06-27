@@ -37,5 +37,9 @@ namespace mShop.Constants
             {Others, "inne"}
 
         };
+
+        public static string DoYouWantToSellXItemsForX { get; } = "Do you want to sell {0} item(s) for {1}";
+        public static string PLN { get; } = "zł";
+        public static string ConfirmTransaction { get; } = "Confirm transaction";
     }
 }

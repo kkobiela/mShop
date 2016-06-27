@@ -34,13 +34,15 @@ namespace mShop.Presenters
 
         private void View_SellProducts()
         {
-            if (_model.ShopModel.CompleteOrder(_cart))
+            if (_cart.Count <= 0) return;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat(ConstantTexts.DoYouWantToSellXItemsForX, _cart.Count, _cart.TotalPrice);
+            sb.Append(ConstantTexts.PLN);
+            if (_view.IsTransactionOk(sb.ToString()))
             {
-                Console.WriteLine("success");
-            }
-            else
-            {
-                Console.WriteLine("fail");
+                _model.ShopModel.CompleteOrder(_cart);
+                _cart.RemoveAll();
+                RefreshView();
             }
         }
 
@@ -99,8 +101,9 @@ namespace mShop.Presenters
 
         private void RefreshView()
         {
+            _model.ShopModel.TemporaryProductsData = _model.ShopModel.GetProducts();
             UpdateProductsList();
-            _view.UpdateCart(null);
+            _view.UpdateCart(_cart.GetProducts());
         }
         
         public void UpdateProductsList()
