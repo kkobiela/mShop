@@ -38,7 +38,7 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.labelSumText = new System.Windows.Forms.Label();
-            this.labelSumOfAllPrices = new System.Windows.Forms.Label();
+            this.lbTotalPrice = new System.Windows.Forms.Label();
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
@@ -159,15 +159,15 @@
             this.labelSumText.TabIndex = 10;
             this.labelSumText.Text = "Sum:";
             // 
-            // labelSumOfAllPrices
+            // lbTotalPrice
             // 
-            this.labelSumOfAllPrices.AutoSize = true;
-            this.labelSumOfAllPrices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSumOfAllPrices.Location = new System.Drawing.Point(810, 411);
-            this.labelSumOfAllPrices.Name = "labelSumOfAllPrices";
-            this.labelSumOfAllPrices.Size = new System.Drawing.Size(15, 16);
-            this.labelSumOfAllPrices.TabIndex = 11;
-            this.labelSumOfAllPrices.Text = "-";
+            this.lbTotalPrice.AutoSize = true;
+            this.lbTotalPrice.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbTotalPrice.Location = new System.Drawing.Point(810, 411);
+            this.lbTotalPrice.Name = "lbTotalPrice";
+            this.lbTotalPrice.Size = new System.Drawing.Size(15, 16);
+            this.lbTotalPrice.TabIndex = 11;
+            this.lbTotalPrice.Text = "-";
             // 
             // pageChangerControl
             // 
@@ -183,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.Controls.Add(this.labelSumOfAllPrices);
+            this.Controls.Add(this.lbTotalPrice);
             this.Controls.Add(this.labelSumText);
             this.Controls.Add(this.panelCart);
             this.Controls.Add(this.tbLogin);
@@ -215,6 +215,6 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Label labelSumText;
-        private System.Windows.Forms.Label labelSumOfAllPrices;
+        private System.Windows.Forms.Label lbTotalPrice;
     }
 }

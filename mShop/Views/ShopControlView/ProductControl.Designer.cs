@@ -134,7 +134,7 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPrice.Location = new System.Drawing.Point(407, 12);
+            this.labelPrice.Location = new System.Drawing.Point(400, 13);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(50, 13);
             this.labelPrice.TabIndex = 10;

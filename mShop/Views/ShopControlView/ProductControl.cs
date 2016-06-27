@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mShop.Constants;
 
 namespace mShop.Views
 {
@@ -23,6 +24,7 @@ namespace mShop.Views
             this.lbAvailableQuantity.Text = item.Quantity.ToString();
             this.numericUpDownQuantity.Value = checkedItemQuantity;
             this.numericUpDownQuantity.Maximum = item.Quantity;
+            this.labelPrice.Text = item.Price.ToString() + ConstantTexts.PLN;
             _item = item;
         }
 

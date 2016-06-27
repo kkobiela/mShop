@@ -56,7 +56,7 @@ namespace mShop.Presenters
             { 
                 _cart.AddProduct(item, quantity);
             }
-            _view.UpdateCart(_cart.GetProducts());
+            _view.UpdateCart(_cart);
         }
 
         private void View_SearchProduct(object sender, SearchItemArgs e)
@@ -102,7 +102,7 @@ namespace mShop.Presenters
         {
             _model.ShopModel.TemporaryProductsData = _model.ShopModel.GetProducts();
             UpdateProductsList();
-            _view.UpdateCart(_cart.GetProducts());
+            _view.UpdateCart(_cart);
         }
         
         private void UpdateProductsList()
@@ -125,7 +125,7 @@ namespace mShop.Presenters
         {
             _cart.RemoveProduct(item);
             UpdateProductsList();
-            _view.UpdateCart(_cart.GetProducts());
+            _view.UpdateCart(_cart);
         }
 
         private bool IsInCart(products_in_shop item) => _cart.GetProducts().ContainsKey(item);

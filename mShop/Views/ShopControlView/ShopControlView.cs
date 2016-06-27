@@ -68,14 +68,15 @@ namespace mShop.Views
             AddProductControls(list);
         }
 
-        public void UpdateCart(Dictionary<products_in_shop, int> list)
+        public void UpdateCart(ShoppingCart cart)
         {
             DeleteItemsInControl(panelCart);
-            if (list != null)
+            if (cart.GetProducts() != null)
             {
                 int y = 0;
-                foreach (var x in list)
+                foreach (KeyValuePair<products_in_shop, int> x in cart)
                 {
+                    
                     ShoppingCartControlView item = new ShoppingCartControlView(x.Key, x.Value);
                     item.Location = new System.Drawing.Point(0, y);
                     item.ProductRemovedFromCart += ShoppingCartControl_ProductRemovedFromCart;
@@ -83,7 +84,9 @@ namespace mShop.Views
                     y += Constants.ConstantValues.ProductInCartMargin;
                 }
             }
+            lbTotalPrice.Text = cart.TotalPrice.ToString() + ConstantTexts.PLN;
         }
+
 
         private void DeleteItemsInControl(Control ctrl)
         {

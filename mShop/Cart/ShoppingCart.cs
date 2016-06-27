@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,9 +41,16 @@ namespace mShop
             decimal sum = 0m;
             foreach (var item in _cart)
             {
-                sum += item.Key.Price;
+                sum += item.Key.Price*ProductQuantity(item.Key);
             }
             return sum;
         }
+
+        public IEnumerator<KeyValuePair<products_in_shop, int>> GetEnumerator()
+        {
+            return _cart.GetEnumerator();
+        }
+
+        
     }
 }
