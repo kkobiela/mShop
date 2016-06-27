@@ -38,5 +38,13 @@ namespace mShop.Views
                 MessageBox.Show(Constants.ConstantTexts.CannotAddZeroProducts);
             }
         }
+
+        private void EnterKeyPressAddToCart(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnAddToCart_Click(sender, e);
+            }
+        }
     }
 }

@@ -48,6 +48,7 @@
             this.tbSearchProducts.Name = "tbSearchProducts";
             this.tbSearchProducts.Size = new System.Drawing.Size(100, 20);
             this.tbSearchProducts.TabIndex = 0;
+            this.tbSearchProducts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressSearch);
             // 
             // cbSearchCategory
             // 
@@ -58,6 +59,7 @@
             this.cbSearchCategory.Size = new System.Drawing.Size(121, 21);
             this.cbSearchCategory.TabIndex = 1;
             this.cbSearchCategory.SelectedIndexChanged += new System.EventHandler(this.cbSearchCategory_SelectedIndexChanged);
+            this.cbSearchCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressSearch);
             // 
             // btnSearch
             // 
@@ -65,7 +67,7 @@
             this.btnSearch.Location = new System.Drawing.Point(524, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -84,7 +86,7 @@
             this.btnLogout.Location = new System.Drawing.Point(929, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(76, 23);
-            this.btnLogout.TabIndex = 5;
+            this.btnLogout.TabIndex = 8;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -97,7 +99,7 @@
             this.panelCart.Location = new System.Drawing.Point(605, 33);
             this.panelCart.Name = "panelCart";
             this.panelCart.Size = new System.Drawing.Size(400, 369);
-            this.panelCart.TabIndex = 0;
+            this.panelCart.TabIndex = 6;
             // 
             // btnSell
             // 
@@ -106,7 +108,7 @@
             this.btnSell.Location = new System.Drawing.Point(929, 408);
             this.btnSell.Name = "btnSell";
             this.btnSell.Size = new System.Drawing.Size(75, 23);
-            this.btnSell.TabIndex = 6;
+            this.btnSell.TabIndex = 7;
             this.btnSell.Text = "Sell";
             this.btnSell.UseVisualStyleBackColor = false;
             this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
@@ -118,8 +120,9 @@
             this.cbCategory.Location = new System.Drawing.Point(236, 3);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(121, 21);
-            this.cbCategory.TabIndex = 7;
+            this.cbCategory.TabIndex = 2;
             this.cbCategory.Visible = false;
+            this.cbCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressSearch);
             // 
             // tbLogin
             // 
@@ -128,7 +131,8 @@
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.ReadOnly = true;
             this.tbLogin.Size = new System.Drawing.Size(170, 13);
-            this.tbLogin.TabIndex = 8;
+            this.tbLogin.TabIndex = 11;
+            this.tbLogin.TabStop = false;
             this.tbLogin.Text = "user";
             this.tbLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -157,7 +161,7 @@
             this.pageChangerControl.MaxNumberOfPages = 1;
             this.pageChangerControl.Name = "pageChangerControl";
             this.pageChangerControl.Size = new System.Drawing.Size(227, 29);
-            this.pageChangerControl.TabIndex = 3;
+            this.pageChangerControl.TabIndex = 5;
             // 
             // ShopControlView
             // 

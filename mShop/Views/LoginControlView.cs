@@ -40,11 +40,18 @@ namespace mShop.Views
         {
             Button btn = sender as Button;
 
-            if(btn != null)
-            {
+            //if(btn != null)
+            //{
                 Login?.Invoke(this, new LoginEventArgs(tbLogin.Text, tbPassword.Text));
-            }
+            //}
         }
 
+        private void EnterKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

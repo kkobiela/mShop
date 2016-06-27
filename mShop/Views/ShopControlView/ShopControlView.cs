@@ -212,6 +212,7 @@ namespace mShop.Views
         private void btnSell_Click(object sender, EventArgs e)
         {
             SellProduct?.Invoke();
+            tbSearchProducts.Focus();
         }
 
         private void ShoppingCartControl_ProductRemovedFromCart(products_in_shop item)
@@ -227,6 +228,15 @@ namespace mShop.Views
                 return true;
             }
             return false;
+        }
+
+        private void EnterKeyPressSearch(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnSearch_Click(sender, e);
+                gbProductsList.Focus();
+            }
         }
 
 

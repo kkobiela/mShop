@@ -66,6 +66,7 @@
             this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(207, 15);
             this.tbName.TabIndex = 4;
+            this.tbName.TabStop = false;
             this.tbName.Text = "Proszek do prania";
             // 
             // tbBrand
@@ -77,6 +78,7 @@
             this.tbBrand.ReadOnly = true;
             this.tbBrand.Size = new System.Drawing.Size(118, 15);
             this.tbBrand.TabIndex = 5;
+            this.tbBrand.TabStop = false;
             this.tbBrand.Text = "Ariel";
             // 
             // lbQuantity

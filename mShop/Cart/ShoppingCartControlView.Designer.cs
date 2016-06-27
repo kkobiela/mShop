@@ -41,6 +41,7 @@
             this.tbItem.Name = "tbItem";
             this.tbItem.Size = new System.Drawing.Size(345, 13);
             this.tbItem.TabIndex = 0;
+            this.tbItem.TabStop = false;
             // 
             // btnRemove
             // 

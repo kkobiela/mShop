@@ -32,6 +32,7 @@ namespace mShop
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);
+            viewControl.Focus();
         }
 
         public void InitializeUserView()
@@ -45,6 +46,7 @@ namespace mShop
             viewControl.TabIndex = 0;
             Controls.Add(viewControl);
             Presenter.InitializePresenter(viewControl);
+            viewControl.Focus();
         }
 
         private void RemoveViewControl(string controlName)
