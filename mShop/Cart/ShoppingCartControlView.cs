@@ -23,7 +23,7 @@ namespace mShop.Cart
         public ShoppingCartControlView(products_in_shop item, int quantity) : this()
         {
             _item = item;
-            tbItem.Text = item.Name + " - " + item.Brand + " - " + quantity; 
+            tbItem.Text = item.Name + " - " + item.Brand + "   x " + quantity; 
         }
 
         public void UpdateQuantity(products_in_shop item, int quantity)

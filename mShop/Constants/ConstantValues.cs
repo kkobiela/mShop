@@ -10,6 +10,6 @@ namespace mShop.Constants
     {
         public static int ProductControlMargin { get; } = 37;
         public static int NumberOfControlsOnPage { get; } = 10;
-        public static int ProductInCartMargin { get; } = 20;
+        public static int ProductInCartMargin { get; } = 31;
     }
 }

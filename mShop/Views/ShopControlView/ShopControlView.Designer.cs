@@ -37,6 +37,8 @@
             this.btnSell = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.tbLogin = new System.Windows.Forms.TextBox();
+            this.labelSumText = new System.Windows.Forms.Label();
+            this.labelSumOfAllPrices = new System.Windows.Forms.Label();
             this.pageChangerControl = new mShop.Views.PageChangerControl();
             this.SuspendLayout();
             // 
@@ -59,6 +61,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Location = new System.Drawing.Point(524, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -77,6 +80,7 @@
             // 
             // btnLogout
             // 
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Location = new System.Drawing.Point(929, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(76, 23);
@@ -88,6 +92,7 @@
             // panelCart
             // 
             this.panelCart.AutoScroll = true;
+            this.panelCart.BackColor = System.Drawing.SystemColors.Window;
             this.panelCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCart.Location = new System.Drawing.Point(605, 33);
             this.panelCart.Name = "panelCart";
@@ -96,12 +101,14 @@
             // 
             // btnSell
             // 
-            this.btnSell.Location = new System.Drawing.Point(781, 408);
+            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSell.Location = new System.Drawing.Point(929, 408);
             this.btnSell.Name = "btnSell";
             this.btnSell.Size = new System.Drawing.Size(75, 23);
             this.btnSell.TabIndex = 6;
             this.btnSell.Text = "Sell";
-            this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.UseVisualStyleBackColor = false;
             this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // cbCategory
@@ -125,6 +132,25 @@
             this.tbLogin.Text = "user";
             this.tbLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // labelSumText
+            // 
+            this.labelSumText.AutoSize = true;
+            this.labelSumText.Location = new System.Drawing.Point(773, 413);
+            this.labelSumText.Name = "labelSumText";
+            this.labelSumText.Size = new System.Drawing.Size(31, 13);
+            this.labelSumText.TabIndex = 10;
+            this.labelSumText.Text = "Sum:";
+            // 
+            // labelSumOfAllPrices
+            // 
+            this.labelSumOfAllPrices.AutoSize = true;
+            this.labelSumOfAllPrices.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSumOfAllPrices.Location = new System.Drawing.Point(802, 412);
+            this.labelSumOfAllPrices.Name = "labelSumOfAllPrices";
+            this.labelSumOfAllPrices.Size = new System.Drawing.Size(62, 16);
+            this.labelSumOfAllPrices.TabIndex = 11;
+            this.labelSumOfAllPrices.Text = "14,31 zł";
+            // 
             // pageChangerControl
             // 
             this.pageChangerControl.Location = new System.Drawing.Point(201, 406);
@@ -137,6 +163,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelSumOfAllPrices);
+            this.Controls.Add(this.labelSumText);
             this.Controls.Add(this.panelCart);
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.cbCategory);
@@ -166,5 +194,7 @@
         private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.TextBox tbLogin;
+        private System.Windows.Forms.Label labelSumText;
+        private System.Windows.Forms.Label labelSumOfAllPrices;
     }
 }

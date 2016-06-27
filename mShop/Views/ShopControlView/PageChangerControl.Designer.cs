@@ -37,7 +37,7 @@
             // 
             this.labelPages.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelPages.AutoSize = true;
-            this.labelPages.Location = new System.Drawing.Point(97, 5);
+            this.labelPages.Location = new System.Drawing.Point(99, 8);
             this.labelPages.Name = "labelPages";
             this.labelPages.Size = new System.Drawing.Size(24, 13);
             this.labelPages.TabIndex = 8;
@@ -46,7 +46,8 @@
             // btnNextPage
             // 
             this.btnNextPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNextPage.Location = new System.Drawing.Point(141, 0);
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.Location = new System.Drawing.Point(143, 3);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(75, 23);
             this.btnNextPage.TabIndex = 7;
@@ -57,7 +58,8 @@
             // btnPreviousPage
             // 
             this.btnPreviousPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPreviousPage.Location = new System.Drawing.Point(0, 0);
+            this.btnPreviousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviousPage.Location = new System.Drawing.Point(2, 3);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(75, 23);
             this.btnPreviousPage.TabIndex = 6;
@@ -73,7 +75,7 @@
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPreviousPage);
             this.Name = "PageChangerControl";
-            this.Size = new System.Drawing.Size(216, 23);
+            this.Size = new System.Drawing.Size(221, 29);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -53,6 +53,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Location = new System.Drawing.Point(133, 162);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
@@ -66,7 +67,7 @@
             this.labelShopName.AutoSize = true;
             this.labelShopName.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelShopName.Location = new System.Drawing.Point(114, 11);
-            this.labelShopName.Name = Constants.ConstantTexts.ShopName;
+            this.labelShopName.Name = "labelShopName";
             this.labelShopName.Size = new System.Drawing.Size(131, 58);
             this.labelShopName.TabIndex = 3;
             this.labelShopName.Text = "mShop";
@@ -78,7 +79,7 @@
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(36, 13);
             this.labelLogin.TabIndex = 4;
-            this.labelLogin.Text = Constants.ConstantTexts.Login;
+            this.labelLogin.Text = "Login:";
             // 
             // labelPassword
             // 
@@ -87,7 +88,7 @@
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(56, 13);
             this.labelPassword.TabIndex = 5;
-            this.labelPassword.Text = Constants.ConstantTexts.Password;
+            this.labelPassword.Text = "Password:";
             // 
             // LoginControlView
             // 
