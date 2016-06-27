@@ -14,8 +14,10 @@ namespace mShop.Views
     public partial class ShopControlView : UserControl, IView
     {
         public event Action ForceUpdateProductsList;
-        public event Action<products_in_shop, int> ProductChecked;
+        public event Action<products_in_shop, int> ProductAdded;
+        public event Action<products_in_shop> ProductRemovedFromCart;
         public event EventHandler<SearchItemArgs> SearchProduct;
+        public event Action SellProduct;
         public event Action Logout;
         public string LoginOfCurrentUser { set { tbLogin.Text = value; } }
 
@@ -34,7 +36,7 @@ namespace mShop.Views
 
         public void ProductControl_ProductChecked(products_in_shop item, int quantity)
         {
-            ProductChecked?.Invoke(item, quantity);
+            ProductAdded?.Invoke(item, quantity);
         }
 
         public void ChangeCurrentPage(object sender, PageChangedArgs e)
@@ -67,14 +69,15 @@ namespace mShop.Views
 
         public void UpdateCart(Dictionary<products_in_shop, int> list)
         {
+            DeleteItemsInControl(panelCart);
             if (list != null)
             {
                 int y = 0;
-                DeleteItemsInControl(panelCart);
                 foreach (var x in list)
                 {
                     ShoppingCartControlView item = new ShoppingCartControlView(x.Key, x.Value);
                     item.Location = new System.Drawing.Point(0, y);
+                    item.ProductRemovedFromCart += ShoppingCartControl_ProductRemovedFromCart;
                     panelCart.Controls.Add(item);
                     y += Constants.ConstantValues.ProductInCartMargin;
                 }
@@ -207,7 +210,12 @@ namespace mShop.Views
 
         private void btnSell_Click(object sender, EventArgs e)
         {
+            SellProduct?.Invoke();
+        }
 
+        public void ShoppingCartControl_ProductRemovedFromCart(products_in_shop item)
+        {
+            ProductRemovedFromCart?.Invoke(item);
         }
     }
 }

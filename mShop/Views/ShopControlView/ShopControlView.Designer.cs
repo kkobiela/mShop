@@ -77,7 +77,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(781, 4);
+            this.btnLogout.Location = new System.Drawing.Point(929, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(76, 23);
             this.btnLogout.TabIndex = 5;
@@ -89,9 +89,9 @@
             // 
             this.panelCart.AutoScroll = true;
             this.panelCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCart.Location = new System.Drawing.Point(605, 29);
+            this.panelCart.Location = new System.Drawing.Point(605, 33);
             this.panelCart.Name = "panelCart";
-            this.panelCart.Size = new System.Drawing.Size(251, 373);
+            this.panelCart.Size = new System.Drawing.Size(400, 369);
             this.panelCart.TabIndex = 0;
             // 
             // btnSell
@@ -117,7 +117,7 @@
             // tbLogin
             // 
             this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLogin.Location = new System.Drawing.Point(605, 10);
+            this.tbLogin.Location = new System.Drawing.Point(746, 9);
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.ReadOnly = true;
             this.tbLogin.Size = new System.Drawing.Size(170, 13);
@@ -137,10 +137,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelCart);
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.btnSell);
-            this.Controls.Add(this.panelCart);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.gbProductsList);
             this.Controls.Add(this.pageChangerControl);
@@ -148,7 +148,7 @@
             this.Controls.Add(this.cbSearchCategory);
             this.Controls.Add(this.tbSearchProducts);
             this.Name = "ShopControlView";
-            this.Size = new System.Drawing.Size(860, 438);
+            this.Size = new System.Drawing.Size(1024, 438);
             this.ResumeLayout(false);
             this.PerformLayout();
 

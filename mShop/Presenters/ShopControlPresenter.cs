@@ -25,8 +25,23 @@ namespace mShop.Presenters
             _view.ForceUpdateProductsList += UpdateProductsList;
             _view.SearchProduct += View_SearchProduct;
             _view.Logout += View_Logout;
-            _view.ProductChecked += View_ProductChecked;
+            _view.ProductAdded += View_ProductChecked;
+            _view.ProductRemovedFromCart += View_ProductRemovedFromCart;
             _view.LoginOfCurrentUser = _model.Login;
+            _view.SellProduct += View_SellProducts;
+        }
+
+
+        private void View_SellProducts()
+        {
+            if (_model.ShopModel.CompleteOrder(_cart))
+            {
+                Console.WriteLine("success");
+            }
+            else
+            {
+                Console.WriteLine("fail");
+            }
         }
 
         private void View_ProductChecked(products_in_shop item, int quantity)
@@ -81,6 +96,12 @@ namespace mShop.Presenters
         {
             throw new NotImplementedException();
         }
+
+        private void RefreshView()
+        {
+            UpdateProductsList();
+            _view.UpdateCart(null);
+        }
         
         public void UpdateProductsList()
         {
@@ -101,6 +122,13 @@ namespace mShop.Presenters
                 data.Add(item, ProductQuantityInCart(item));
             }
             return data;
+        }
+
+        private void View_ProductRemovedFromCart(products_in_shop item)
+        {
+            _cart.RemoveProduct(item);
+            UpdateProductsList();
+            _view.UpdateCart(_cart.GetProducts());
         }
 
         private bool IsInCart(products_in_shop item) => _cart.GetProducts().ContainsKey(item);
