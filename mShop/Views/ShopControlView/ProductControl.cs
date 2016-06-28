@@ -37,7 +37,7 @@ namespace mShop.Views
             }
             else
             {
-                MessageBox.Show(Constants.ConstantTexts.CannotAddZeroProducts);
+                MessageBox.Show(Constants.ConstantTexts.CannotAddZeroProducts,Constants.ConstantTexts.Error,MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

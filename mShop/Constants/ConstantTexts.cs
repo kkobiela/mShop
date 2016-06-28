@@ -17,8 +17,8 @@ namespace mShop.Constants
         public static string Password { get; } = "Password:";
         public static string BtnSearch { get; } = "Search";
         public static string LbQuantity { get; } = "Quantity:";
-        public static string WrongUsernameOrPassword { get; } = "Wrong username or password";
-        public static string CannotFindProducts { get; } = "Unable to find products that meet given criteria";
+        public static string WrongUsernameOrPassword { get; } = "Wrong username or password.";
+        public static string CannotFindProducts { get; } = "Unable to find products that meet given criteria.";
         public static string Error { get; } = "Error";
         public static string Sell { get; } = "Sell";
         public static string Name { get; } = "Name";
@@ -41,6 +41,7 @@ namespace mShop.Constants
         public static string DoYouWantToSellXItemsForX { get; } = "Do you want to sell {0} item(s) for {1}";
         public static string PLN { get; } = "zł";
         public static string ConfirmTransaction { get; } = "Confirm transaction";
-        public static string CannotAddZeroProducts { get; } = "Cannot add 0 products";
+        public static string CannotAddZeroProducts { get; } = "Cannot add 0 products.";
+        public static string CartIsEmpty { get; } = "Cart is empty.\nAdd something to cart.";
     }
 }

@@ -214,8 +214,15 @@ namespace mShop.Views
 
         private void btnSell_Click(object sender, EventArgs e)
         {
-            SellProduct?.Invoke();
-            tbSearchProducts.Focus();
+            if (panelCart.Controls.Count > 0)
+            {
+                SellProduct?.Invoke();
+                tbSearchProducts.Focus();
+            }
+            else
+            {
+                MessageBox.Show(Constants.ConstantTexts.CartIsEmpty, Constants.ConstantTexts.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void ShoppingCartControl_ProductRemovedFromCart(products_in_shop item)
