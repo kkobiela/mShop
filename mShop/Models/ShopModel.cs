@@ -168,7 +168,7 @@ namespace mShop.Models
             {
                 try
                 {
-                    foreach (var product in shoppingCart.GetProducts())
+                    foreach (var product in shoppingCart)
                     {
                         if (product.Value > 0)
                         {

@@ -51,7 +51,6 @@ namespace mShop.Models
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.ToString());
                 return false;
             }
 
@@ -59,7 +58,7 @@ namespace mShop.Models
 
         public void CloseConnection()
         {
-            if(db != null)
+            if (db != null)
             {
                 db = null;
             }

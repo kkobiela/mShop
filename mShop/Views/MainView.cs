@@ -35,7 +35,7 @@ namespace mShop
             viewControl.Focus();
         }
 
-        public void InitializeUserView()
+        public void IntializeShopview()
         {
             string controlName = "viewControl";
             RemoveViewControl(controlName);

@@ -26,7 +26,7 @@ namespace mShop.Presenters
             ViewsDict = new Dictionary<ViewType, Action>
             {
                 {ViewType.Login, _view.InitializeLoginView},
-                {ViewType.Shop, _view.InitializeUserView}
+                {ViewType.Shop, _view.IntializeShopview}
                 
             };
         }

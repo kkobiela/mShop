@@ -10,7 +10,7 @@ namespace mShop
     public class ShoppingCart
     {
         private Dictionary<products_in_shop, int> _cart = new Dictionary<products_in_shop, int>();
-        public int Count { get { return _cart.Count; } }
+        public int Count => _cart.Count;
         public void AddProduct(products_in_shop product, int quantity)
         {
             if(_cart.ContainsKey(product))
@@ -34,7 +34,7 @@ namespace mShop
 
         public Dictionary<products_in_shop, int> GetProducts() => _cart;
 
-        public decimal TotalPrice { get { return CalculateTotalPrice(); } }
+        public decimal TotalPrice => CalculateTotalPrice();
 
         private decimal CalculateTotalPrice()
         {
@@ -46,11 +46,7 @@ namespace mShop
             return sum;
         }
 
-        public IEnumerator<KeyValuePair<products_in_shop, int>> GetEnumerator()
-        {
-            return _cart.GetEnumerator();
-        }
-
+        public IEnumerator<KeyValuePair<products_in_shop, int>> GetEnumerator() => _cart.GetEnumerator();
         
     }
 }
