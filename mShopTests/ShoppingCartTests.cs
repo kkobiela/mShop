@@ -4,6 +4,7 @@ using mShop.Models;
 using mShop;
 
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace mShopTests
 {
@@ -18,45 +19,42 @@ namespace mShopTests
             product.Id = 5;
             product.Quantity = 4;
 
-            ShoppingCart shoppingCart = new ShoppingCart();
- 
-            bool expectedGoodValue = true;
-            bool expectedBadValue = false;
+            int quantity = 5;
 
+            ShoppingCart shoppingCart = new ShoppingCart();
+            KeyValuePair<products_in_shop, int> expectedKeyValue = new KeyValuePair<products_in_shop, int>(product, quantity);
+            
             //act
-            bool good = shoppingCart.AddProduct(product,5);
-            bool bad = shoppingCart.AddProduct(product,5);
+            shoppingCart.AddProduct(product, quantity);
 
             //assert
-            Assert.AreEqual(expectedGoodValue, good);
-            Assert.AreEqual(expectedBadValue, bad);
+            foreach (var item in shoppingCart)
+            {
+                Assert.AreEqual(expectedKeyValue, item);
+            }
+            
         }
 
         [TestMethod]
         public void RemoveProduct()
         {
             //arrange
-            products_in_shop goodProduct = new products_in_shop();
-            goodProduct.Id = 5;
+            products_in_shop product = new products_in_shop();
+            product.Id = 5;
+            product.Quantity = 4;
 
-            products_in_shop badProduct = new products_in_shop();
-            badProduct.Id = 500;
+            int quantity = 5;
 
             ShoppingCart shoppingCart = new ShoppingCart();
+            KeyValuePair<products_in_shop, int> expectedKeyValue = new KeyValuePair<products_in_shop, int>(product, quantity);
 
-            bool expectedGoodValue = true;
-            bool expectedBadValue = false;
-
-            shoppingCart.AddProduct(goodProduct,10);
+            int expectedCount = 0;
 
             //act
-
-            bool good = shoppingCart.RemoveProduct(goodProduct);
-            bool bad = shoppingCart.RemoveProduct(badProduct);
-
+            shoppingCart.AddProduct(product, quantity);
+            shoppingCart.RemoveProduct(expectedKeyValue.Key);
             //assert
-            Assert.AreEqual(expectedGoodValue, good);
-            Assert.AreEqual(expectedBadValue, bad);
+            Assert.AreEqual(expectedCount, shoppingCart.Count);
         }
 
        
