@@ -37,18 +37,19 @@
             // 
             this.labelPages.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelPages.AutoSize = true;
-            this.labelPages.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPages.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPages.Location = new System.Drawing.Point(99, 8);
             this.labelPages.Name = "labelPages";
-            this.labelPages.Size = new System.Drawing.Size(31, 13);
+            this.labelPages.Size = new System.Drawing.Size(27, 15);
             this.labelPages.TabIndex = 8;
             this.labelPages.Text = "1/1";
             // 
             // btnNextPage
             // 
             this.btnNextPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNextPage.BackColor = System.Drawing.Color.Wheat;
-            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnNextPage.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNextPage.Location = new System.Drawing.Point(143, 3);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(75, 23);
@@ -60,8 +61,9 @@
             // btnPreviousPage
             // 
             this.btnPreviousPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPreviousPage.BackColor = System.Drawing.Color.Wheat;
-            this.btnPreviousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviousPage.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnPreviousPage.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPreviousPage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPreviousPage.Location = new System.Drawing.Point(2, 3);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(75, 23);
@@ -74,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OldLace;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.labelPages);
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPreviousPage);

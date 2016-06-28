@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAddToCart.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAAd0SU1FB+AGHBENINw7O2cAAACqSURBVFhH7ZMxCoNAEEWnSKqkCkEtJVVOYCVI
+        bufxPJGRF2ZCCsFm80WYBwN/vwv7d2e0JEmSQ3PubKR8qeXU2fQY7jOFdltH01/fz1fzKbTbOur+8g2A
+        dltH9RMA7fb/oM88NbflwHa4zREAjcc39hSfCSadYYsDt4q9Rf+O3QPAri1YgwMjANptHdw2AqDd1sFT
+        RwC02zroM8NGSXq+BpNefNqTJEm0mC0qg3Z9q5KTCQAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
